@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     private Animator animator;
     private float playerScale;
 
-
+    public bool IsDodging { get => isDodging;}
 
     private void Awake()
     {
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void Animate()
     {
-        animator.SetBool("isRunning", !(rb.velocity.x == 0));
+        animator.SetBool(AnimationKey.Player_Is_Running, !(rb.velocity.x == 0));
     }
 
     private void FixedUpdate()
@@ -124,7 +124,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
         lastDodgeTime = Time.time;
         dodgeStartTime = Time.time;
         dodgeDirection = GetDodgeDirection();
-        animator.SetBool("isDodging", true);
+        animator.SetBool(AnimationKey.Player_Is_Dodging, true);
     }
 
     private void PerformDodge()
@@ -143,7 +143,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void EndDodge()
     {
-        animator.SetBool("isDodging", false);
+        animator.SetBool(AnimationKey.Player_Is_Dodging, false);
         isDodging = false;
     }
 }
