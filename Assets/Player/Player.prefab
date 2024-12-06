@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5191210655486718875}
   - component: {fileID: 4800022674819096033}
   - component: {fileID: 8131809727912701080}
+  - component: {fileID: 1171483466686493320}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -204,7 +205,7 @@ MonoBehaviour:
   rayLength: 0.5
   jumpSpeed: 20
   dodgeDistance: 5
-  dodgeTime: 0.3
+  dodgeTime: 0.15
   timeBetweenDodges: 1
 --- !u!114 &4800022674819096033
 MonoBehaviour:
@@ -239,6 +240,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1171483466686493320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5814784163775332827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2d5d26d1c67a641bf3b4756bcde8a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 4700345896937794406}
+  attackRadius: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  lightAttackDamage: 10
+  lightAttackCooldown: 1
+  heavyAttackDamage: 35
+  heavyAttackCooldown: 5
 --- !u!1 &8208035618268460965
 GameObject:
   m_ObjectHideFlags: 0

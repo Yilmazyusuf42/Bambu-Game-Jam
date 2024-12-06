@@ -3,20 +3,19 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour,IPlayerCombat
 {
     [SerializeField] private Transform attackPoint;
+    [SerializeField] float attackRadius = 1f;
     [SerializeField] LayerMask enemyLayer;
 
     Animator animator;
 
 
     [Header("*** LIGHT ATTACK ***")]
-    [SerializeField] float lightAttackRadius = 1f;
     [SerializeField] int lightAttackDamage = 10;
-    [SerializeField] private float lightAttackCooldown = 0.5f;
+    [SerializeField] private float lightAttackCooldown = 1f;
     private bool lightAttackIsOnCooldown;
     private float elapsedTimeAfterLightAttack = 0f;
 
     [Header("*** HEAVY ATTACK ***")]
-    [SerializeField] private float heavyAttackRadius = 1.25f;
     [SerializeField] private int heavyAttackDamage = 35;
     [SerializeField] private float heavyAttackCooldown = 5f;
     private bool heavyAttackIsOnCooldown;
@@ -34,6 +33,21 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
         if (lightAttackIsOnCooldown)
         {
             elapsedTimeAfterLightAttack += Time.deltaTime;
+            if (elapsedTimeAfterLightAttack >= lightAttackCooldown)
+            {
+                lightAttackIsOnCooldown = false;
+                elapsedTimeAfterLightAttack = 0;
+            }
+        }
+
+        if (heavyAttackIsOnCooldown)
+        {
+            elapsedTimeAfterHeavyAttack += Time.deltaTime;
+            if (elapsedTimeAfterHeavyAttack >= heavyAttackCooldown)
+            {
+                heavyAttackIsOnCooldown = false;
+                elapsedTimeAfterHeavyAttack = 0;
+            }
         }
     }
 
@@ -58,12 +72,12 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
 
     public void LightAttackAnimationEvent()
     {
-        Attack(lightAttackRadius, lightAttackDamage);
+        Attack(attackRadius, lightAttackDamage);
     }
 
     public void HeavyAttackAnimationEvent()
     {
-        Attack(heavyAttackRadius, heavyAttackDamage);
+        Attack(attackRadius, heavyAttackDamage);
     }
 
 
@@ -71,8 +85,10 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
     {
         if (!lightAttackIsOnCooldown)
         {
+            Attack(attackRadius, lightAttackDamage);
             animator.SetTrigger("LightAttack");
             lightAttackIsOnCooldown = true;
+            print("Light Attack Is On Cooldown:"+lightAttackIsOnCooldown);
         }
 
     }
@@ -81,9 +97,17 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
     {
         if (!heavyAttackIsOnCooldown)
         {
+            Attack(attackRadius, heavyAttackDamage);
             animator.SetTrigger("HeavyAttack");
             heavyAttackIsOnCooldown = true;
+            print("Heavy Attack Is On Cooldown:" + heavyAttackIsOnCooldown);
         }
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 }
