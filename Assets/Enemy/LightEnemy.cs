@@ -4,11 +4,13 @@ using UnityEngine;
 public class LightEnemy : MonoBehaviour
 {
     public float detectionRange = 10f;     // Görüþ mesafesi
-    public float attackRange = 2f;         // Saldýrý mesafesi
-    public float moveSpeed = 3f;           // Düþman hýz
-    public float attackDelay = 1f;         // Saldýrý gecikmesi
+    public float attackRange = 2f;        // Saldýrý mesafesi
+    public float moveSpeed = 3f;          // Düþman hareket hýzý
+    public float attackDelay = 1f;        // Saldýrý gecikmesi
+    public float attackDamage = 10f;      // Saldýrý hasarý
+    public Vector2 attackAreaSize; // Saldýrý bölgesinin boyutu
 
-    private bool isAttacking = false;      // Saldýrý yapma durumu
+    private bool isAttacking = false;     // Saldýrý yapma durumu
 
     void Update()
     {
@@ -17,7 +19,7 @@ public class LightEnemy : MonoBehaviour
 
         if (playerCollider != null && !isAttacking)
         {
-            // Oyuncu algýlandý, ona doðru git
+            // Oyuncu algýlandý, ona doðru hareket et
             MoveTowardsPlayer(playerCollider.transform);
 
             // Oyuncu saldýrý alanýnda mý?
@@ -47,7 +49,19 @@ public class LightEnemy : MonoBehaviour
     {
         isAttacking = true;
 
-        // Saldýrý animasyonu veya etkileþimi buraya ekleyebilirsiniz
+        // Saldýrý bölgesindeki oyuncuyu kontrol et
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position, attackAreaSize, 0f, LayerMask.GetMask("Player"));
+
+        foreach (var hitCollider in hitColliders)
+        {
+            // Oyuncuya hasar ver
+            PlayerHealth playerHealth = hitCollider.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(attackDamage);
+            }
+        }
+
         Debug.Log("Attack!");
 
         // Saldýrýdan sonra bir süre bekle
@@ -57,10 +71,13 @@ public class LightEnemy : MonoBehaviour
         isAttacking = false;
     }
 
-    // Görüþ alanýný görsel olarak göstermek için yardýmcý bir fonksiyon (editor'de görsel gösterim için)
+    // Görüþ alanýný ve saldýrý bölgesini görselleþtirmek için yardýmcý fonksiyon
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(transform.position, attackAreaSize);
     }
 }
