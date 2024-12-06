@@ -7,7 +7,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
     [SerializeField] LayerMask enemyLayer;
 
     Animator animator;
-
+    private IPlayerMovement playerMovement;
 
     [Header("*** LIGHT ATTACK ***")]
     [SerializeField] int lightAttackDamage = 10;
@@ -24,7 +24,8 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();
+        playerMovement = GetComponent<IPlayerMovement>();
     }
 
 
@@ -85,10 +86,17 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
     {
         if (!lightAttackIsOnCooldown)
         {
+            if (playerMovement.IsDodging)
+            {
+                animator.SetTrigger(AnimationKey.Player_Dash_Strike);
+            }
+            else
+            {
+                animator.SetTrigger(AnimationKey.Player_Light_Attack);
+            }
+
             Attack(attackRadius, lightAttackDamage);
-            animator.SetTrigger("LightAttack");
             lightAttackIsOnCooldown = true;
-            print("Light Attack Is On Cooldown:"+lightAttackIsOnCooldown);
         }
 
     }
@@ -98,9 +106,9 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
         if (!heavyAttackIsOnCooldown)
         {
             Attack(attackRadius, heavyAttackDamage);
-            animator.SetTrigger("HeavyAttack");
+            animator.SetTrigger(AnimationKey.Player_Heavy_Attack);
             heavyAttackIsOnCooldown = true;
-            print("Heavy Attack Is On Cooldown:" + heavyAttackIsOnCooldown);
+
         }
 
     }

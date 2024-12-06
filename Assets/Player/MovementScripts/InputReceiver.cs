@@ -9,6 +9,7 @@ public class InputReceiver : MonoBehaviour
 
     private IPlayerCombat playerCombat;
     private IPlayerMovement playerMovement;
+    private IPlayerRecruit playerRecruit;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class InputReceiver : MonoBehaviour
 
         playerCombat = GetComponent<IPlayerCombat>();
         playerMovement = GetComponent<IPlayerMovement>();
+        playerRecruit = GetComponent<IPlayerRecruit>();
 
         playerInput = new PlayerInput();
 
@@ -28,6 +30,12 @@ public class InputReceiver : MonoBehaviour
         playerInput.PlayerActions.HeavyAttack.performed += OnHeavyAttackPerformed;
         playerInput.PlayerActions.Dodge.performed += OnDodgePerformed;
         playerInput.PlayerActions.Jump.performed += OnJumpPerformed;
+        playerInput.PlayerActions.Recruit.performed += OnRecruitPerformed;
+    }
+
+    private void OnRecruitPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        playerRecruit?.RecruitCrewMember();
     }
 
     private void OnLightAttackPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
