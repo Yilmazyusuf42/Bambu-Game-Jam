@@ -13,12 +13,14 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
     [SerializeField] int lightAttackDamage = 10;
     [SerializeField] private float lightAttackCooldown = 0.5f;
     private bool lightAttackIsOnCooldown;
+    private float elapsedTimeAfterLightAttack = 0f;
 
     [Header("*** HEAVY ATTACK ***")]
     [SerializeField] private float heavyAttackRadius = 1.25f;
     [SerializeField] private int heavyAttackDamage = 35;
     [SerializeField] private float heavyAttackCooldown = 5f;
     private bool heavyAttackIsOnCooldown;
+    private float elapsedTimeAfterHeavyAttack = 0;
 
 
     private void Awake()
@@ -29,7 +31,10 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
 
     private void Update()
     {
-        
+        if (lightAttackIsOnCooldown)
+        {
+            elapsedTimeAfterLightAttack += Time.deltaTime;
+        }
     }
 
 
@@ -66,7 +71,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
     {
         if (!lightAttackIsOnCooldown)
         {
-                
+            animator.SetTrigger("LightAttack");
             lightAttackIsOnCooldown = true;
         }
 
@@ -76,7 +81,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
     {
         if (!heavyAttackIsOnCooldown)
         {
-
+            animator.SetTrigger("HeavyAttack");
             heavyAttackIsOnCooldown = true;
         }
 
