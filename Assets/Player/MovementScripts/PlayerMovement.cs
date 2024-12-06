@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
         animator.SetBool(AnimationKey.Player_Is_Running, !(rb.velocity.x == 0));
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         isGrounded = GroundCheck();
 
@@ -105,7 +105,6 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     {
         if (canDodge)
         {
-            print("girdi");
             StartDodge();
         }
     }
@@ -114,7 +113,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     {
         Vector2 moveDirection = new(InputReceiver.Instance.GetMoveDirection(), 0);
         //if character does not move dash towards its own direction.Else dash according to movement.
-        return !moveDirection.Equals(Vector2.zero) ? new Vector2(moveDirection.x, 0) : new Vector2(transform.localScale.x, 0).normalized;
+        return !moveDirection.Equals(Vector2.zero) ? new Vector2(moveDirection.x, 0) : new Vector2(-transform.localScale.x, 0).normalized;
     }
 
     private void StartDodge()
@@ -137,7 +136,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
         }
         else
         {
-            transform.position += dodgeDirection * Time.fixedDeltaTime / dodgeTime * dodgeDistance;
+            transform.position += dodgeDirection * Time.deltaTime / dodgeTime * dodgeDistance;
         }
     }
 
