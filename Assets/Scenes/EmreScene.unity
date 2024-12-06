@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 902310934}
   - component: {fileID: 902310933}
   - component: {fileID: 902310932}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -467,7 +467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdac96280025784dbb5a44f34b04c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desiredDistance: 5
   moveSpeed: 3
   maxDistance: 7
   minDistance: 3
