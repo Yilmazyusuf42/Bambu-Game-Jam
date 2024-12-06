@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class TheCar : MonoBehaviour
 {
-    public GameObject taret;
-    public GameObject missle;
-    public Transform misslePlace;
+    [Header(" GameObjects ")]
+    [SerializeField] private GameObject taret;
+    [SerializeField] private GameObject missle;
+    [SerializeField] private Transform misslePlace;
+    [SerializeField] private float fireStandBy = .1f;
+    float fireTimer;
+
+    [SerializeField] private float gear1Speed;
+    [SerializeField] private float gear2Speed;
 
 
     int gearLevel = 0;
     float speed;
     Vector3 mousePos;
-
     bool controllingTaret;
 
     Rigidbody2D rb;
@@ -27,6 +32,7 @@ public class TheCar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        fireTimer -= Time.deltaTime;
         Movement();
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -49,11 +55,11 @@ public class TheCar : MonoBehaviour
     {
         if (controllingTaret)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0) && fireTimer < 0)
             {
-                Debug.Log("ateşledim mermiyi");
                 Missle newMissle = Instantiate(missle, misslePlace.position, Quaternion.identity).GetComponent<Missle>();
-                newMissle.AdjustTheMousePos(mousePos);
+                newMissle.AdjustTheMissle(mousePos);
+                fireTimer = fireStandBy;
             }
         }
     }
@@ -118,9 +124,9 @@ public class TheCar : MonoBehaviour
         if (gearLevel == 0)
             speed = 0f;
         else if (gearLevel == 1)
-            speed = 5f;
+            speed = gear1Speed;
         else if (gearLevel == 2)
-            speed = 10f;
+            speed = gear2Speed;
     }
 
     public void gearUp()

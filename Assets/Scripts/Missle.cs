@@ -7,8 +7,7 @@ public class Missle : MonoBehaviour
     public Vector3 mousePos;
     float speed = 50f;
     Rigidbody2D rb;
-
-    Vector2 target;
+    Vector2 direction;
 
     void Start()
     {
@@ -18,22 +17,20 @@ public class Missle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += (Vector3)target * speed * Time.deltaTime;
+        rb.velocity = direction * speed;
     }
 
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("carpistim");
-        if (other.gameObject.CompareTag("ground"))
+        if (other.gameObject.CompareTag("Ground"))
         {
-            Destroy(this.gameObject);
-            Debug.Log("patladım ben kardesim");
+            Destroy(gameObject);
         }
     }
 
-    public void AdjustTheMousePos(Vector3 mousePos)
+    public void AdjustTheMissle(Vector3 mousePos)
     {
-        target = (mousePos - transform.position).normalized;
+        direction = (mousePos - transform.position).normalized;
     }
 }
