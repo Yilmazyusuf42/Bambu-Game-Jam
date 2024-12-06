@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class FlyingEnemy : MonoBehaviour
 {
-    //public float desiredDistance = 5f;     // Oyuncuya korunacak mesafe
+    [Header("*** Attack Settings ***")]
     public float moveSpeed = 3f;           // Düþman hareket hýzý
     public float maxDistance = 7f;         // Oyuncuya yaklaþmasý gereken en uzak mesafe
     public float minDistance = 3f;         // Oyuncudan uzaklaþmasý gereken en yakýn mesafe
     public float fireDistance = 4f;        // Ateþ etme mesafesi
     public float detectionRange = 10f;     // Düþmanýn oyuncuyu algýlayacaðý mesafe
     public float attackDelay = 1f;         // Saldýrý gecikmesi
+
+    [Header("*** Projectile Settings ***")]
+    public GameObject projectilePrefab;    // Fýrlatýlacak mermi prefab'ý
+    public float projectileSpeed = 5f;     // Merminin fýrlatma hýzý
 
     private bool isAttacking = false;      // Saldýrý durumu
 
@@ -34,7 +38,7 @@ public class FlyingEnemy : MonoBehaviour
             // Eðer ateþ mesafesindeyse ateþ et
             if (distanceToPlayer <= fireDistance && !isAttacking)
             {
-                AttackPlayer();
+                AttackPlayer(player);
             }
         }
     }
@@ -46,20 +50,28 @@ public class FlyingEnemy : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
     }
 
-
-    void AttackPlayer()
+    void AttackPlayer(Transform player)
     {
         if (!isAttacking)
         {
-            StartCoroutine(AttackCooldown());
+            StartCoroutine(AttackCooldown(player));
         }
     }
 
-    IEnumerator AttackCooldown()
+    IEnumerator AttackCooldown(Transform player)
     {
         isAttacking = true;
 
-        // Ateþ etme animasyonu veya etkileþimi buraya ekleyebilirsiniz
+        // Mermi instantiate et ve oyuncuya doðru fýrlat
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        Vector2 direction = (player.position - transform.position).normalized;
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+        {
+            rb.velocity = direction * projectileSpeed;
+        }
+
         Debug.Log("Firing!");
 
         // Saldýrýdan sonra bir süre bekle
