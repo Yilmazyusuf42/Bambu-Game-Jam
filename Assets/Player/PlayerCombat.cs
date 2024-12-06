@@ -5,7 +5,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
     [SerializeField] private Transform attackPoint;
     [SerializeField] LayerMask enemyLayer;
 
-    private Rigidbody rb;
+    Animator animator;
 
 
     [Header("*** LIGHT ATTACK ***")]
@@ -23,7 +23,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();    
     }
 
 
@@ -53,17 +53,20 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
 
     public void LightAttackAnimationEvent()
     {
-
+        Attack(lightAttackRadius, lightAttackDamage);
     }
 
-
+    public void HeavyAttackAnimationEvent()
+    {
+        Attack(heavyAttackRadius, heavyAttackDamage);
+    }
 
 
     public void OnLightAttackPerformed()
     {
         if (!lightAttackIsOnCooldown)
         {
-            Attack(lightAttackRadius, lightAttackDamage);
+                
             lightAttackIsOnCooldown = true;
         }
 
@@ -73,7 +76,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
     {
         if (!heavyAttackIsOnCooldown)
         {
-            Attack(heavyAttackRadius, heavyAttackDamage);
+
             heavyAttackIsOnCooldown = true;
         }
 

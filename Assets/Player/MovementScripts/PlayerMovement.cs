@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         playerScale = transform.localScale.x;  
     }
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void Animate()
     {
-        //animator.SetBool("isRunning", !(rb.velocity.x == 0));
+        animator.SetBool("isRunning", !(rb.velocity.x == 0));
     }
 
     private void FixedUpdate()
@@ -124,7 +124,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
         lastDodgeTime = Time.time;
         dodgeStartTime = Time.time;
         dodgeDirection = GetDodgeDirection();
-        //animator.SetBool("isDodging", true);
+        animator.SetBool("isDodging", true);
     }
 
     private void PerformDodge()
@@ -143,7 +143,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void EndDodge()
     {
-        //animator.SetBool("isDodging", false);
+        animator.SetBool("isDodging", false);
         isDodging = false;
     }
 }
