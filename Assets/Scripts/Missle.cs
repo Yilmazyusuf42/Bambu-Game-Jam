@@ -6,6 +6,7 @@ public class Missle : MonoBehaviour
 {
     public Vector3 mousePos;
     float speed = 50f;
+    float damage;
     Rigidbody2D rb;
     Vector2 direction;
 
@@ -29,8 +30,9 @@ public class Missle : MonoBehaviour
         }
     }
 
-    public void AdjustTheMissle(Vector3 mousePos)
+    public void AdjustTheMissle(Vector3 mousePos, float _damage)
     {
         direction = (mousePos - transform.position).normalized;
+        damage = _damage;
     }
 }

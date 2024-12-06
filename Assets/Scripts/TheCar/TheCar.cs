@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -9,9 +10,33 @@ public class TheCar : MonoBehaviour
     [SerializeField] private GameObject taret;
     [SerializeField] private GameObject missle;
     [SerializeField] private Transform misslePlace;
-    [SerializeField] private float fireStandBy = .1f;
-    float fireTimer;
 
+    [Space(10)]
+    [SerializeField] private float carHealt;
+    [SerializeField] private float aracYurur;
+    [SerializeField] private float mazot;
+    [SerializeField] private float mazotUsage;
+
+    bool mazotOk;
+    bool carHealthOk;
+    bool yururOk;
+
+
+
+    [Space(10)]
+
+    [Header("Taret İnfos")]
+    [SerializeField] private float fireStandBy = .1f;
+    [SerializeField] private float missleDamage;
+    [SerializeField] private float taretCoolDown;
+    [SerializeField] private float taretHeatDown;
+    [SerializeField] private float taretHeatUp;
+    Color orjSpriteColor;
+
+    bool isTaretHeatedUp = false;
+    float taretCurrentHeat = 0;
+    float fireTimer;
+    SpriteRenderer taretSprite;
     [SerializeField] private float gear1Speed;
     [SerializeField] private float gear2Speed;
 
@@ -27,6 +52,8 @@ public class TheCar : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        taretSprite = taret.GetComponent<SpriteRenderer>();
+        orjSpriteColor = taretSprite.color;
     }
 
     // Update is called once per frame
@@ -45,28 +72,32 @@ public class TheCar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
             TaretOnOff();
 
-
-
         ControlTheTaret();
         FiringTheMissle();
+        taretHeatStatus();
+    }
+
+    private void taretHeatStatus()
+    {
+        if (taretCurrentHeat > 0)
+            taretCurrentHeat -= taretHeatDown * Time.deltaTime;
+        Debug.Log(taretCurrentHeat);
+        taretSprite.color = Color.Lerp(orjSpriteColor, Color.red, taretCurrentHeat);
     }
 
     private void FiringTheMissle()
     {
-        if (controllingTaret)
+        if (controllingTaret && !isTaretHeatedUp)
         {
             if (Input.GetMouseButton(0) && fireTimer < 0)
             {
                 Missle newMissle = Instantiate(missle, misslePlace.position, Quaternion.identity).GetComponent<Missle>();
-                newMissle.AdjustTheMissle(mousePos);
+                newMissle.AdjustTheMissle(mousePos, missleDamage);
                 fireTimer = fireStandBy;
+                TaretHeatUp();
             }
         }
     }
-
-
-
-
 
 
 
@@ -94,6 +125,31 @@ public class TheCar : MonoBehaviour
             controllingTaret = false;
     }
 
+    private void TaretHeatUp()
+    {
+        taretCurrentHeat += taretHeatUp;
+        if (taretCurrentHeat >= 1f)
+        {
+            isTaretHeatedUp = true;
+            StartCoroutine(taretHeated());
+        }
+    }
+
+    IEnumerator taretHeated()
+    {
+        float time = 0f;
+        while (time < taretCoolDown)
+        {
+            taretSprite.color = Color.Lerp(Color.red, orjSpriteColor, time / taretCoolDown);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        isTaretHeatedUp = false;
+        Debug.Log("taret sogudu");
+        taretCurrentHeat = 0;
+    }
+
+
 
     private Vector3 takeMousePos()
     {
@@ -103,12 +159,71 @@ public class TheCar : MonoBehaviour
         return mousePos;
     }
 
+    // Can car go ?
+    bool canGo()
+    {
+
+        if (mazotOk && yururOk && carHealthOk)
+            return true;
+        else
+            return false;
+    }
+
+
+
+    void CartakingDamage(float _damage)
+    {
+        carHealt -= _damage;
+        if (carHealt < 0)
+            carHealthOk = false;
+    }
+
+
+    void CarTakeHealth(float _health)
+    {
+        if (carHealt + _health > 100)
+            carHealt = 100f;
+        else
+            carHealt += _health;
+        carHealthOk = true;
+    }
+
+
+    void DamagedYurur(float _damage)
+    {
+        aracYurur -= _damage;
+        if (aracYurur < 0)
+            yururOk = false;
+    }
+
+    public void HealYurur(float _health)
+    {
+        if (aracYurur + _health > 100)
+            aracYurur = 100f;
+        else
+            aracYurur += _health;
+        yururOk = true;
+    }
+
+
+    void mazotRunsOut()
+    {
+        mazot -= mazotUsage;
+        if (mazot <= 0)
+            mazotOk = false;
+    }
+
+    public void mazotAdd(float _mazotAmount)
+    {
+        mazot += _mazotAmount;
+        mazotOk = true;
+    }
 
 
     // Velocity of the Car
     private void Movement()
     {
-        if (gearLevel > 0)
+        if (gearLevel > 0 && canGo())
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
         }
