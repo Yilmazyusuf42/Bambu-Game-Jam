@@ -28,5 +28,10 @@ public class Projectile : MonoBehaviour
             // Mermiyi yok et
             Destroy(gameObject);
         }
+        if (collision.CompareTag("Car"))
+        {
+            TheCar.carHealth -= 20f;
+            Destroy(gameObject);
+        }
     }
 }
