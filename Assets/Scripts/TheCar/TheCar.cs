@@ -20,7 +20,8 @@ public class TheCar : MonoBehaviour
     public static float carHealth;
     public static float aracYurur;
     [SerializeField] private float mazot;
-    [SerializeField] private float mazotUsage;
+    private float mazotUsage;
+    [SerializeField] private float maxSpeed = 10f; // Maksimum hız.
 
 
     bool mazotOk = true;
@@ -47,17 +48,33 @@ public class TheCar : MonoBehaviour
     [SerializeField] private float gear1Speed;
     [SerializeField] private float gear2Speed;
 
+    private Rigidbody2D carRigidbody;
+
+    private bool isHandbrakeActive = false; // El freninin durumu
+    float handBreakSpeed = 2f; // El frenini etkinleştirmek için hız sınırı
 
     int gearLevel = 0;
     float speed;
     Vector3 mousePos;
     bool controllingTaret;
 
-    Rigidbody2D rb;
-
     List<Transform> wheelsList = new List<Transform>();
 
+    bool isBraking =false;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        carRigidbody = GetComponent<Rigidbody2D>();
+        taretSprite = taret.GetComponent<SpriteRenderer>();
+        orjSpriteColor = taretSprite.color;
+
+        healthBar.SetMaxHealth(carHealth);
+        mazotBar.SetMaxMazot(mazot);
+        yururBar.SetMaxYurur(aracYurur);
+
+        GetWheels();
+    }
 
     public void GetWheels()
     {
@@ -89,8 +106,8 @@ public class TheCar : MonoBehaviour
             // Eğer wheel objesinde Rigidbody2D varsa, tork uyguluyoruz
             if (wheelRigidbody2D != null)
             {
-
                 wheelRigidbody2D.AddTorque(-speed * Time.fixedDeltaTime);
+
             }
             else
             {
@@ -99,25 +116,71 @@ public class TheCar : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void ApplyBrake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        taretSprite = taret.GetComponent<SpriteRenderer>();
-        orjSpriteColor = taretSprite.color;
+        foreach (Transform wheel in wheelsList)
+        {
+            // Wheel objesinin Rigidbody2D bileşenini alıyoruz
+            Rigidbody2D wheelRigidbody2D = wheel.GetComponent<Rigidbody2D>();
 
-        healthBar.SetMaxHealth(carHealth);
-        mazotBar.SetMaxMazot(mazot);
-        yururBar.SetMaxYurur(aracYurur);
+            // Eğer wheel objesinde Rigidbody2D varsa, tork uyguluyoruz
+            if (wheelRigidbody2D != null)
+            {
+                wheelRigidbody2D.AddTorque(speed * Time.fixedDeltaTime);
 
-        GetWheels();
+            }
+            else
+            {
+                Debug.LogWarning("No Rigidbody2D found on " + wheel.name);
+            }
+        }
     }
+
+    private void ToggleHandbrake()
+    {
+        if (!isHandbrakeActive)
+        {
+            // Eğer araç hız sınırının altındaysa el frenini etkinleştir
+            if (carRigidbody.velocity.magnitude < handBreakSpeed)
+            {
+                isHandbrakeActive = true;
+                carRigidbody.constraints = RigidbodyConstraints2D.FreezeAll; // Rigidbody'yi dondur
+                Debug.Log("El freni çekildi.");
+            }
+            else
+            {
+                Debug.Log("Araç çok hızlı, el freni çekilemez!");
+            }
+        }
+        else
+        {
+            // El frenini devre dışı bırak
+            isHandbrakeActive = false;
+            carRigidbody.constraints = RigidbodyConstraints2D.None; // Rigidbody'yi serbest bırak
+            Debug.Log("El freni bırakıldı.");
+        }
+    }
+
+
+
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Hızımız : " + this.GetComponent<Rigidbody2D>().velocity);
+
+        //Debug.Log("Mazot Durumu : " + mazot);
+
         fireTimer -= Time.deltaTime;
         Movement();
+
+        if (Input.GetKey(KeyCode.P))
+            isBraking = true;
+        else
+            isBraking = false;
+
+        if (Input.GetKeyDown(KeyCode.O))
+            ToggleHandbrake();
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
             gearUp();
@@ -289,7 +352,12 @@ public class TheCar : MonoBehaviour
     // Velocity of the Car
     private void Movement()
     {
-        if (gearLevel > 0 && canGo())
+        if(isBraking)
+        {
+            ApplyBrake();
+        }
+
+        if (gearLevel > 0 && canGo() && !isBraking)
         {
             //rb.velocity = new Vector2(speed, rb.velocity.y);
             ApplyTorqueToWheels();
@@ -316,16 +384,25 @@ public class TheCar : MonoBehaviour
     }
 
     #region  Gear
-    // Aracın fitesine göre hızını değiştirildiği kısım
     private void gearLevelDetection()
     {
-        Debug.Log($"vites {gearLevel}");
+        Debug.Log($"Vites: {gearLevel}");
+
         if (gearLevel == 0)
+        {
             speed = 0f;
+            mazotUsage = 0f; // Boş viteste mazot tüketimi durabilir veya çok az olabilir.
+        }
         else if (gearLevel == 1)
+        {
             speed = gear1Speed;
+            mazotUsage = 0.1f; // İlk viteste düşük mazot tüketimi.
+        }
         else if (gearLevel == 2)
+        {
             speed = gear2Speed;
+            mazotUsage = 0.2f; // İkinci viteste daha fazla mazot tüketimi.
+        }
     }
 
     public void gearUp()
