@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7268474340045291139}
   - component: {fileID: 7145798058555943057}
   - component: {fileID: 8528818328509489083}
+  - component: {fileID: -259034868156968838}
   m_Layer: 0
   m_Name: FlyingEnemy
   m_TagString: Untagged
@@ -169,3 +170,16 @@ MonoBehaviour:
   attackDelay: 1
   projectilePrefab: {fileID: 7630684490683763888, guid: 9a1abbf3b2c493f4c958ce13ad67725f, type: 3}
   projectileSpeed: 5
+--- !u!114 &-259034868156968838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3547282376201512002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22024a2b77360db41bdecd1a01773076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100

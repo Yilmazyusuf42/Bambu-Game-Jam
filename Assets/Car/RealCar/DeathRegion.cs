@@ -6,11 +6,11 @@ public class DeathRegion : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.gameObject.layer == 9)
         {
             TheCar.aracYurur -= 20;
 
-            
+            collision.GetComponent<EnemyHealth>().Die();
         }
     }
 }

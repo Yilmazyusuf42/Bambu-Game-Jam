@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7107158773487431916}
   - component: {fileID: 7730519473915662551}
   - component: {fileID: 913386146480848181}
+  - component: {fileID: 2400487261843460361}
   m_Layer: 0
   m_Name: LightZombie
   m_TagString: Untagged
@@ -167,3 +168,16 @@ MonoBehaviour:
   attackDelay: 1
   attackDamage: 10
   attackAreaSize: {x: 2.89, y: 2.14}
+--- !u!114 &2400487261843460361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384815918819003216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22024a2b77360db41bdecd1a01773076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
