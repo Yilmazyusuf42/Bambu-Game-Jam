@@ -7,6 +7,9 @@ using UnityEngine;
 public class TheCar : MonoBehaviour
 {
     [Header(" GameObjects ")]
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private MazotBar mazotBar;
+    [SerializeField] private YururBar yururBar;
     [SerializeField] private GameObject taret;
     [SerializeField] private GameObject missle;
     [SerializeField] private Transform misslePlace;
@@ -17,9 +20,9 @@ public class TheCar : MonoBehaviour
     [SerializeField] private float mazot;
     [SerializeField] private float mazotUsage;
 
-    bool mazotOk;
-    bool carHealthOk;
-    bool yururOk;
+    bool mazotOk = true;
+    bool carHealthOk = true;
+    bool yururOk = true;
 
 
 
@@ -54,6 +57,10 @@ public class TheCar : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         taretSprite = taret.GetComponent<SpriteRenderer>();
         orjSpriteColor = taretSprite.color;
+
+        healthBar.SetMaxHealth(carHealt);
+        mazotBar.SetMaxMazot(mazot);
+        yururBar.SetMaxYurur(aracYurur);
     }
 
     // Update is called once per frame
@@ -75,6 +82,7 @@ public class TheCar : MonoBehaviour
         ControlTheTaret();
         FiringTheMissle();
         taretHeatStatus();
+        mazotRunsOut();
     }
 
     private void taretHeatStatus()
@@ -108,7 +116,7 @@ public class TheCar : MonoBehaviour
         {
             Vector3 mousePos = takeMousePos();
             // Objeye doğru bir vektör oluştur 
-            Vector3 direction = mousePos - transform.position;
+            Vector3 direction = mousePos - misslePlace.transform.position;
             // Rotasyonu hesapla 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             // Objeyi döndür
@@ -171,27 +179,33 @@ public class TheCar : MonoBehaviour
 
 
 
-    void CartakingDamage(float _damage)
+    public void CartakingDamage(float _damage)
     {
-        carHealt -= _damage;
+        if (carHealt > 0)
+            carHealt -= _damage;
+        healthBar.SetCurrentHealth(carHealt);
+        Debug.Log(carHealt);
         if (carHealt < 0)
             carHealthOk = false;
     }
 
 
-    void CarTakeHealth(float _health)
+    public void CarTakeHealth(float _health)
     {
         if (carHealt + _health > 100)
             carHealt = 100f;
         else
             carHealt += _health;
         carHealthOk = true;
+        healthBar.SetCurrentHealth(carHealt);
     }
 
 
-    void DamagedYurur(float _damage)
+    public void DamagedYurur(float _damage)
     {
         aracYurur -= _damage;
+        Debug.Log(aracYurur);
+        yururBar.SetCurrentYurur(aracYurur);
         if (aracYurur < 0)
             yururOk = false;
     }
@@ -203,19 +217,27 @@ public class TheCar : MonoBehaviour
         else
             aracYurur += _health;
         yururOk = true;
+        yururBar.SetCurrentYurur(aracYurur);
+        Debug.Log(aracYurur);
+
     }
 
 
     void mazotRunsOut()
     {
-        mazot -= mazotUsage;
+        if (mazot > 0)
+            mazot -= mazotUsage;
+        mazotBar.SetCurrentMazot(mazot);
         if (mazot <= 0)
             mazotOk = false;
     }
 
     public void mazotAdd(float _mazotAmount)
     {
-        mazot += _mazotAmount;
+        if (mazot + _mazotAmount > 100)
+            mazot = 100f;
+        else
+            mazot += _mazotAmount;
         mazotOk = true;
     }
 

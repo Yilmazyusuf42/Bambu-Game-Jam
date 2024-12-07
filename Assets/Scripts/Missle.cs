@@ -5,7 +5,7 @@ using UnityEngine;
 public class Missle : MonoBehaviour
 {
     public Vector3 mousePos;
-    float speed = 50f;
+    float speed = 100f;
     float damage;
     Rigidbody2D rb;
     Vector2 direction;
@@ -24,10 +24,7 @@ public class Missle : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 
     public void AdjustTheMissle(Vector3 mousePos, float _damage)
