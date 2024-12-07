@@ -127,7 +127,6 @@ public class FreezerEnemy : MonoBehaviour
         {
             playerRb.constraints = RigidbodyConstraints2D.None; // Dondurmayý kaldýr
             playerRb.constraints = RigidbodyConstraints2D.FreezeRotation; // Yalnýzca rotasyonu sabitle
-            Debug.Log("Oyuncu dondurmasý kaldýrýldý!");
         }
     }
 
@@ -138,5 +137,14 @@ public class FreezerEnemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionRange); // Algýlama alaný
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, freezeDistance); // Donma mesafesi
+    }
+
+    private void OnDestroy()
+    {
+        if (playerRb != null)
+        {
+            playerRb.constraints = RigidbodyConstraints2D.None; // Dondurmayý kaldýr
+            playerRb.constraints = RigidbodyConstraints2D.FreezeRotation; // Yalnýzca rotasyonu sabitle
+        }
     }
 }

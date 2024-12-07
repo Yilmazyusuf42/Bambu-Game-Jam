@@ -3,9 +3,9 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
 
-    public int maxHealth = 100;
+    public float maxHealth = 100;
 
-    private int currentHealth;
+    private float currentHealth;
 
     void Start()
     {
@@ -13,11 +13,12 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         // Hasar alýndýðýnda caný düþür.
         currentHealth -= damage;
         Debug.Log($"{gameObject.name} has {currentHealth} health remaining.");
+
 
         // Can sýfýr veya daha azsa düþmaný öldür.
         if (currentHealth <= 0)

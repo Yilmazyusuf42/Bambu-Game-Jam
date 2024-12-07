@@ -62,11 +62,11 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
 
         foreach (Collider2D enemy in enemiesHit)
         {
-            //if (enemy.TryGetComponent<Tower>(out var tower))
-            //{
-            //    tower.TakeDamage(attackDamage);
-            //    ScreenShake.Instance.Shake();
-            //}
+            if (enemy.TryGetComponent<EnemyHealth>(out var enemyHP))
+            {
+                enemyHP.TakeDamage(attackDamage);
+                ScreenShake.Instance.Shake(0.15f,0);
+            }
         }
     }
 

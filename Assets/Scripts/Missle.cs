@@ -6,7 +6,7 @@ public class Missle : MonoBehaviour
 {
     public Vector3 mousePos;
     float speed = 100f;
-    float damage;
+    float damage = 20f;
     Rigidbody2D rb;
     Vector2 direction;
 
@@ -24,7 +24,10 @@ public class Missle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print(collision.gameObject.name);
+        if (collision.gameObject.TryGetComponent<EnemyHealth>(out var enemy))
+        {
+            enemy.TakeDamage(damage);
+        }
         Destroy(gameObject);
     }
 
