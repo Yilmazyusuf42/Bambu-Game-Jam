@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CrewMember : MonoBehaviour
@@ -16,14 +17,20 @@ public class CrewMember : MonoBehaviour
     private Transform target;
     private int targetCount =0;
     private Rigidbody2D rb;
+    private Animator animator;
+    private Vector2 initialScale;
+    private bool isMoving;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Start()
     {
+        initialScale = transform.localScale;
+
         instantiatedUI = Instantiate(uiPrefab,worldSpaceCanvas.transform);
         instantiatedUI.gameObject.SetActive(false);
         SetUIPosition();
@@ -40,7 +47,27 @@ public class CrewMember : MonoBehaviour
 
         Vector3 dir = (target.position - transform.position).normalized;
 
-        transform.position += moveSpeed * Time.deltaTime * dir;
+        if (target.position.x >= transform.position.x)
+        {
+            transform.localScale = initialScale;
+        }
+        else
+        {
+            transform.localScale = new Vector2(-initialScale.x, initialScale.y);
+        }
+
+
+
+        if (dir != Vector3.zero)
+        {
+            transform.position += moveSpeed * Time.deltaTime * dir;
+            animator.SetBool(AnimationKey.Is_Running, true);
+        }
+        else
+        {
+            animator.SetBool (AnimationKey.Is_Running, false);
+        }
+
 
         if (Vector2.Distance(transform.position, target.position) <= 0.1f)
         {
@@ -53,6 +80,7 @@ public class CrewMember : MonoBehaviour
             else
             {
                 AddToCrew();
+                animator.SetBool("isReached", true);
             }
         }
 
@@ -64,6 +92,11 @@ public class CrewMember : MonoBehaviour
         }
     }
 
+    public void StopRunningAnimation()
+    {
+        animator.SetBool(AnimationKey.Is_Running, false);
+    }
+
 
     void SetUIPosition()
     {
@@ -73,6 +106,8 @@ public class CrewMember : MonoBehaviour
     private void OnCrewMemberRecruited()
     {
         target = movePoints[targetCount];
+        instantiatedUI.SetActive(false);
+        isMoving = true;
     }
 
     private void AddToCrew()
@@ -84,9 +119,8 @@ public class CrewMember : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<IPlayerRecruit>(out var player))
+        if (collision.gameObject.TryGetComponent<IPlayerRecruit>(out var player) && !isMoving)
         {
-            print("trigger'a girdi");
             player.CanRecruit = true;
             instantiatedUI.gameObject.SetActive(true);
         }
