@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 80076673}
   - component: {fileID: 80076675}
   - component: {fileID: 80076676}
+  - component: {fileID: 80076677}
   m_Layer: 0
   m_Name: teker 5
   m_TagString: Untagged
@@ -202,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 80076672}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.290001, y: -9.049999, z: 0}
+  m_LocalPosition: {x: 8.03, y: -9.049999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -222,6 +223,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carRigidbody: {fileID: 744107005}
   rotationMultiplier: 10
+  suspensionStrength: 1000
+  suspensionDamping: 50
+  maxSuspensionHeight: 1
+  wheelRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!58 &80076676
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -257,6 +265,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!50 &80076677
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80076672}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &198409208
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,8 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1bb1bca068bac4fa861e5b4657442a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  smoothSpeed: 7.5
+  moveSpeedPercentage: 1
 --- !u!1 &218594190
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +402,7 @@ GameObject:
   - component: {fileID: 218594191}
   - component: {fileID: 218594193}
   - component: {fileID: 218594195}
+  - component: {fileID: 218594197}
   m_Layer: 0
   m_Name: teker 1
   m_TagString: Untagged
@@ -456,6 +491,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carRigidbody: {fileID: 744107005}
   rotationMultiplier: 10
+  suspensionStrength: 1000
+  suspensionDamping: 50
+  maxSuspensionHeight: 1
+  wheelRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!58 &218594195
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -491,6 +533,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!50 &218594197
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218594190}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &269627546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -747,7 +816,7 @@ SpriteRenderer:
   m_Size: {x: 38.399998, y: 21.599998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &373303498
@@ -1227,6 +1296,7 @@ GameObject:
   - component: {fileID: 611344532}
   - component: {fileID: 611344534}
   - component: {fileID: 611344535}
+  - component: {fileID: 611344536}
   m_Layer: 0
   m_Name: teker 3
   m_TagString: Untagged
@@ -1315,6 +1385,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carRigidbody: {fileID: 744107005}
   rotationMultiplier: 10
+  suspensionStrength: 1000
+  suspensionDamping: 50
+  maxSuspensionHeight: 1
+  wheelRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!58 &611344535
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1350,6 +1427,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!50 &611344536
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611344531}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!224 &634093101 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 77447051135036394, guid: 2b0a5b87bcabec04db301fd3a169214f, type: 3}
@@ -1367,6 +1471,7 @@ GameObject:
   - component: {fileID: 664045860}
   - component: {fileID: 664045862}
   - component: {fileID: 664045863}
+  - component: {fileID: 664045864}
   m_Layer: 0
   m_Name: teker 2
   m_TagString: Untagged
@@ -1455,6 +1560,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carRigidbody: {fileID: 744107005}
   rotationMultiplier: 10
+  suspensionStrength: 1000
+  suspensionDamping: 50
+  maxSuspensionHeight: 1
+  wheelRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!58 &664045863
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1490,6 +1602,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!50 &664045864
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664045859}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &702299392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,8 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1bb1bca068bac4fa861e5b4657442a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  smoothSpeed: 7.5
+  moveSpeedPercentage: 1
 --- !u!114 &709696789 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3071841549629913269, guid: 2b0a5b87bcabec04db301fd3a169214f, type: 3}
@@ -1695,6 +1833,14 @@ GameObject:
   - component: {fileID: 744107004}
   - component: {fileID: 744107005}
   - component: {fileID: 744107007}
+  - component: {fileID: 744107008}
+  - component: {fileID: 744107014}
+  - component: {fileID: 744107013}
+  - component: {fileID: 744107012}
+  - component: {fileID: 744107011}
+  - component: {fileID: 744107010}
+  - component: {fileID: 744107009}
+  - component: {fileID: 744107015}
   m_Layer: 10
   m_Name: Car
   m_TagString: Untagged
@@ -1711,7 +1857,7 @@ Transform:
   m_GameObject: {fileID: 744107003}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.4, y: 16.1, z: -0.5077255}
+  m_LocalPosition: {x: -37.21, y: 15.5, z: -0.5077255}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1775,6 +1921,206 @@ MonoBehaviour:
   taretHeatUp: 0.06
   gear1Speed: 10
   gear2Speed: 30
+--- !u!235 &744107008
+WheelJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744107003}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 218594197}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: -10.83, y: -8.5}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_Suspension:
+    m_DampingRatio: 0.08
+    m_Frequency: 2
+    m_Angle: 90
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+--- !u!235 &744107009
+WheelJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744107003}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 2142090659}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 9.85, y: -8.5}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_Suspension:
+    m_DampingRatio: 0.7
+    m_Frequency: 2
+    m_Angle: 90
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+--- !u!235 &744107010
+WheelJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744107003}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 842414633}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 6.23, y: -8.5}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_Suspension:
+    m_DampingRatio: 0.7
+    m_Frequency: 2
+    m_Angle: 90
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+--- !u!235 &744107011
+WheelJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744107003}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 80076677}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 7.27, y: -8.5}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_Suspension:
+    m_DampingRatio: 0.7
+    m_Frequency: 2
+    m_Angle: 90
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+--- !u!235 &744107012
+WheelJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744107003}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 920855193}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: -9.35, y: -8.5}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_Suspension:
+    m_DampingRatio: 0.7
+    m_Frequency: 2
+    m_Angle: 90
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+--- !u!235 &744107013
+WheelJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744107003}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 611344536}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: -1.45, y: -8.5}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_Suspension:
+    m_DampingRatio: 0.7
+    m_Frequency: 2
+    m_Angle: 90
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+--- !u!235 &744107014
+WheelJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744107003}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 664045864}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: -3.15, y: -8.5}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_Suspension:
+    m_DampingRatio: 0.7
+    m_Frequency: 2
+    m_Angle: 90
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+--- !u!235 &744107015
+WheelJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744107003}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 1813762554}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 8.93, y: -8.5}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_Suspension:
+    m_DampingRatio: 0.7
+    m_Frequency: 2
+    m_Angle: 90
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
 --- !u!1 &782710548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,6 +2249,7 @@ GameObject:
   - component: {fileID: 842414629}
   - component: {fileID: 842414631}
   - component: {fileID: 842414632}
+  - component: {fileID: 842414633}
   m_Layer: 0
   m_Name: teker 5 (1)
   m_TagString: Untagged
@@ -1971,7 +2318,7 @@ Transform:
   m_GameObject: {fileID: 842414628}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.3100014, y: -9.040001, z: 0}
+  m_LocalPosition: {x: 6.55, y: -9.040001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1991,6 +2338,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carRigidbody: {fileID: 744107005}
   rotationMultiplier: 10
+  suspensionStrength: 1000
+  suspensionDamping: 50
+  maxSuspensionHeight: 1
+  wheelRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!58 &842414632
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2026,6 +2380,33 @@ CircleCollider2D:
   m_Offset: {x: -0.03, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!50 &842414633
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842414628}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &901930625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,6 +2521,7 @@ GameObject:
   - component: {fileID: 920855189}
   - component: {fileID: 920855191}
   - component: {fileID: 920855192}
+  - component: {fileID: 920855193}
   m_Layer: 0
   m_Name: teker 4
   m_TagString: Untagged
@@ -2228,6 +2610,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carRigidbody: {fileID: 744107005}
   rotationMultiplier: 10
+  suspensionStrength: 1000
+  suspensionDamping: 50
+  maxSuspensionHeight: 1
+  wheelRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!58 &920855192
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2263,6 +2652,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!50 &920855193
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920855188}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1004291317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,7 +2791,7 @@ SpriteRenderer:
   m_Size: {x: 38.399998, y: 21.599998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1073772354 stripped
@@ -2470,7 +2886,7 @@ SpriteRenderer:
   m_Size: {x: 38.399998, y: 21.599998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1150564165 stripped
@@ -2581,8 +2997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1bb1bca068bac4fa861e5b4657442a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.8
-  smoothSpeed: 10
+  moveSpeedPercentage: 1
 --- !u!1 &1208017869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2878,13 +3293,14 @@ GameObject:
   - component: {fileID: 1813762550}
   - component: {fileID: 1813762552}
   - component: {fileID: 1813762553}
+  - component: {fileID: 1813762554}
   m_Layer: 0
   m_Name: teker7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1813762550
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2966,6 +3382,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carRigidbody: {fileID: 744107005}
   rotationMultiplier: 10
+  suspensionStrength: 1000
+  suspensionDamping: 50
+  maxSuspensionHeight: 1
+  wheelRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!58 &1813762553
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3001,6 +3424,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!50 &1813762554
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813762549}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2108034569
 GameObject:
   m_ObjectHideFlags: 0
@@ -3097,6 +3547,7 @@ GameObject:
   - component: {fileID: 2142090655}
   - component: {fileID: 2142090657}
   - component: {fileID: 2142090658}
+  - component: {fileID: 2142090659}
   m_Layer: 0
   m_Name: teker 6
   m_TagString: Untagged
@@ -3144,7 +3595,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6ea5c3b9ed681b24286462abd2371755, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3165,7 +3616,7 @@ Transform:
   m_GameObject: {fileID: 2142090654}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.060001, y: -8.829998, z: 0}
+  m_LocalPosition: {x: 9.92, y: -8.829998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3185,6 +3636,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carRigidbody: {fileID: 744107005}
   rotationMultiplier: 10
+  suspensionStrength: 1000
+  suspensionDamping: 50
+  maxSuspensionHeight: 1
+  wheelRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!58 &2142090658
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3220,6 +3678,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!50 &2142090659
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142090654}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &8029118991879900431
 PrefabInstance:
   m_ObjectHideFlags: 0

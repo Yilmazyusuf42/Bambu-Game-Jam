@@ -55,6 +55,50 @@ public class TheCar : MonoBehaviour
 
     Rigidbody2D rb;
 
+    List<Transform> wheelsList = new List<Transform>();
+
+
+
+    public void GetWheels()
+    {
+
+        // "Wheels" isminde bir child arıyoruz.
+        Transform wheelsParent = transform.Find("Wheels");
+
+        if (wheelsParent != null)
+        {
+            // "Wheels" parent'ındaki tüm child'ları dolaşarak listeye ekliyoruz.
+            foreach (Transform wheel in wheelsParent)
+            {
+                wheelsList.Add(wheel);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Wheels parent not found!");
+        }
+    }
+
+    public void ApplyTorqueToWheels()
+    {
+        foreach (Transform wheel in wheelsList)
+        {
+            // Wheel objesinin Rigidbody2D bileşenini alıyoruz
+            Rigidbody2D wheelRigidbody2D = wheel.GetComponent<Rigidbody2D>();
+
+            // Eğer wheel objesinde Rigidbody2D varsa, tork uyguluyoruz
+            if (wheelRigidbody2D != null)
+            {
+
+                wheelRigidbody2D.AddTorque(-speed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                Debug.LogWarning("No Rigidbody2D found on " + wheel.name);
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +109,8 @@ public class TheCar : MonoBehaviour
         healthBar.SetMaxHealth(carHealt);
         mazotBar.SetMaxMazot(mazot);
         yururBar.SetMaxYurur(aracYurur);
+
+        GetWheels();
     }
 
     // Update is called once per frame
@@ -244,7 +290,9 @@ public class TheCar : MonoBehaviour
     {
         if (gearLevel > 0 && canGo())
         {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
+            //rb.velocity = new Vector2(speed, rb.velocity.y);
+            ApplyTorqueToWheels();
+
         }
     }
 
