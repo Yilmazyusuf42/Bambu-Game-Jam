@@ -1895,7 +1895,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6739458172195469111}
   - component: {fileID: 7142680426830863337}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: "d\u0131\u015F ara\xE7"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1957,7 +1957,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 3df8dbe33c4319e4d9907a9750ca183e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2158,6 +2158,7 @@ GameObject:
   - component: {fileID: 6670098898744165506}
   - component: {fileID: 5052031633848906347}
   - component: {fileID: 5354384033572069623}
+  - component: {fileID: 4753207117155828436}
   m_Layer: 10
   m_Name: Car 1
   m_TagString: Untagged
@@ -2236,7 +2237,7 @@ MonoBehaviour:
   taretHeatDown: 0.2
   taretHeatUp: 0.06
   gear1Speed: 10
-  gear2Speed: 30
+  gear2Speed: 20
 --- !u!235 &2443373424135066247
 WheelJoint2D:
   m_ObjectHideFlags: 0
@@ -2437,6 +2438,89 @@ WheelJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
+--- !u!60 &4753207117155828436
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124917553282944928}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -11.840009, y: 4.1721554}
+      - {x: -5.057297, y: 4.17369}
+      - {x: -3.1977954, y: 3.9164677}
+      - {x: 7.005147, y: 4.133998}
+      - {x: 11.870997, y: 1.942277}
+      - {x: 12.13509, y: -1.3997579}
+      - {x: 9.747068, y: -1.3838096}
+      - {x: 7.6229424, y: -1.3485714}
+      - {x: 7.328415, y: 0.22075295}
+      - {x: 5.03785, y: 0.27396798}
+      - {x: 5.0957685, y: -0.81151235}
+      - {x: 6.5411925, y: -0.997517}
+      - {x: 7.6514125, y: -2.4745133}
+      - {x: 8.200651, y: -2.4874396}
+      - {x: 12.4927, y: -2.0955353}
+      - {x: 12.597213, y: -1.4471035}
+      - {x: 12.475479, y: 1.8554434}
+      - {x: 12.40182, y: 2.4849122}
+      - {x: 6.905398, y: 5.000454}
+      - {x: -11.8260765, y: 4.2371087}
+      - {x: -14.483665, y: 3.7489505}
+      - {x: -14.488525, y: -1.1760916}
+      - {x: -14.532057, y: -5.7522445}
+      - {x: -12.530502, y: -5.764778}
+      - {x: -11.511705, y: -5.801447}
+      - {x: -11.232633, y: -7.2467265}
+      - {x: 10.463287, y: -7.1647344}
+      - {x: 12.946525, y: -6.6034517}
+      - {x: 8.115438, y: -5.5910993}
+      - {x: 7.539499, y: -5.4783883}
+      - {x: 6.88791, y: -5.520564}
+      - {x: -1.7819597, y: -5.54335}
+      - {x: -11.477509, y: -5.3182087}
+      - {x: -11.355205, y: -1.059259}
+      - {x: 2.9302647, y: -1.0284283}
+      - {x: 2.8577209, y: 0.4196009}
+      - {x: -2.8996654, y: 0.26773635}
+      - {x: -11.797624, y: 0.3195933}
+  m_UseDelaunayMesh: 0
 --- !u!1 &8391418020919752783
 GameObject:
   m_ObjectHideFlags: 0

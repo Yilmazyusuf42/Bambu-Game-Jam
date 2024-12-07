@@ -5,8 +5,6 @@ using UnityEngine;
 public class ScreenShake : MonoBehaviour
 {
     public static ScreenShake Instance;
-
-    [SerializeField] private float magnitude = .1f;
     [SerializeField] private float duration = .2f;
 
     private Vector3 originalPosition;
@@ -15,29 +13,29 @@ public class ScreenShake : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        originalPosition = transform.position;
     }
 
 
 
-    public void Shake()
+    public void Shake(float xMagnitude, float yMagnitude)
     {
         if (shakeCoroutine != null)
         {
             StopCoroutine(shakeCoroutine);
         }
-        shakeCoroutine = StartCoroutine(ShakeCoroutine());
+        shakeCoroutine = StartCoroutine(ShakeCoroutine(xMagnitude,yMagnitude));
     }
 
-    private IEnumerator ShakeCoroutine()
+    private IEnumerator ShakeCoroutine(float xMagnitude, float yMagnitude)
     {
-        originalPosition = transform.position;
-
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
-            float offsetX = Random.Range(-1f, 1f) * magnitude;
-            float offsetY = Random.Range(-1f, 1f) * magnitude;
+            float offsetX = Random.Range(-1f, 1f) * xMagnitude;
+            float offsetY = Random.Range(-1f, 1f) * yMagnitude;
 
             transform.position = transform.position + new Vector3(offsetX, offsetY, 0);
 
@@ -45,5 +43,6 @@ public class ScreenShake : MonoBehaviour
             yield return null;
         }
     }
+
 }
 

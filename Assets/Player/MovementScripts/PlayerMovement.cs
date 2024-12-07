@@ -56,11 +56,11 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     {
         if (rb.velocity.x > 0.1f)
         {
-            transform.localScale = new (-playerScale, playerScale);
+            transform.localScale = new (playerScale, playerScale);
         }
         else if (rb.velocity.x < -0.1f)
         {
-            transform.localScale = new (playerScale, playerScale);
+            transform.localScale = new (-playerScale, playerScale);
         }
     }
 
