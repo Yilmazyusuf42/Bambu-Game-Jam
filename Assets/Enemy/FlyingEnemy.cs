@@ -45,9 +45,16 @@ public class FlyingEnemy : MonoBehaviour
 
     void MoveTowardsPlayer(Transform player)
     {
-        // Oyuncuya doðru hareket et
+
         Vector2 direction = (player.position - transform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+
+        if (direction.x != 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = direction.x > 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
     }
 
     void AttackPlayer(Transform player)

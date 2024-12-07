@@ -27,8 +27,10 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     private bool canDodge = true;
     private float lastDodgeTime = -Mathf.Infinity;
 
+    [Header("*** CLIMB ***")]
+    [SerializeField] private float climbSpeed = 5f;
+    private bool canClimb;
 
-    private bool isOnLadder;
     private Rigidbody2D rb;
     private Animator animator;
     private float playerScale;
@@ -88,9 +90,20 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
             canDodge = true;
         }
 
+        if (canClimb && Input.GetKey(KeyCode.W))
+        {
+            Climb();
+        }
+
         Move();
         RotatePlayer();
         Animate();
+    }
+
+    void Climb()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + climbSpeed * Time.deltaTime);
+
     }
 
     public void OnJumpPerformed()
@@ -148,6 +161,17 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Ladder"))
+        {
+            canClimb = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            canClimb = false;
+        }
     }
 }

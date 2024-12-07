@@ -3,26 +3,29 @@ using UnityEngine;
 
 public class LightEnemy : MonoBehaviour
 {
-    public float detectionRange = 10f;     // Görüþ mesafesi
-    public float attackRange = 2f;        // Saldýrý mesafesi
-    public float moveSpeed = 3f;          // Düþman hareket hýzý
-    public float attackDelay = 1f;        // Saldýrý gecikmesi
-    public float attackDamage = 10f;      // Saldýrý hasarý
-    public Vector2 attackAreaSize; // Saldýrý bölgesinin boyutu
+    public float detectionRange = 10f;
+    public float attackRange = 2f;
+    public float moveSpeed = 3f;
+    public float attackDelay = 1f; 
+    public float attackDamage = 10f;
+    public Vector2 attackAreaSize;
 
-    private bool isAttacking = false;     // Saldýrý yapma durumu
+    private bool isAttacking = false;
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
-        // Düþman görüþ alanýnda oyuncu var mý?
         Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, detectionRange, LayerMask.GetMask("Player"));
 
         if (playerCollider != null && !isAttacking)
         {
-            // Oyuncu algýlandý, ona doðru hareket et
             MoveTowardsPlayer(playerCollider.transform);
 
-            // Oyuncu saldýrý alanýnda mý?
             if (Vector2.Distance(transform.position, playerCollider.transform.position) <= attackRange)
             {
                 AttackPlayer();
@@ -32,9 +35,20 @@ public class LightEnemy : MonoBehaviour
 
     void MoveTowardsPlayer(Transform player)
     {
-        // Oyuncuya doðru hareket et
+
         Vector2 direction = (player.position - transform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+
+        if (direction.x != 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = direction.x > 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+        else
+        {
+
+        }
     }
 
     void AttackPlayer()
@@ -49,12 +63,10 @@ public class LightEnemy : MonoBehaviour
     {
         isAttacking = true;
 
-        // Saldýrý bölgesindeki oyuncuyu kontrol et
         Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position, attackAreaSize, 0f, LayerMask.GetMask("Player"));
 
         foreach (var hitCollider in hitColliders)
         {
-            // Oyuncuya hasar ver
             PlayerHealth playerHealth = hitCollider.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
@@ -64,14 +76,11 @@ public class LightEnemy : MonoBehaviour
 
         Debug.Log("Attack!");
 
-        // Saldýrýdan sonra bir süre bekle
         yield return new WaitForSeconds(attackDelay);
 
-        // Saldýrý durumu sýfýrlanýr
         isAttacking = false;
     }
 
-    // Görüþ alanýný ve saldýrý bölgesini görselleþtirmek için yardýmcý fonksiyon
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

@@ -46,9 +46,16 @@ public class FreezerEnemy : MonoBehaviour
             // Eðer mesafe freeze mesafesinden büyükse, oyuncuya doðru hareket et
             if (distanceToPlayer > freezeDistance)
             {
-                // Oyuncuya doðru hareket et
+
                 Vector2 direction = (player.position - transform.position).normalized;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+
+                if (direction.x != 0)
+                {
+                    Vector3 scale = transform.localScale;
+                    scale.x = direction.x > 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+                    transform.localScale = scale;
+                }
             }
             // Eðer mesafe freeze mesafesine yakýnsa, duraklama baþlat
             else

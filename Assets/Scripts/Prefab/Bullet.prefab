@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6785619384442057471}
   - component: {fileID: 956445670063859339}
   - component: {fileID: 1269017530618853586}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.60784316, b: 0, a: 1}
   m_FlipX: 0

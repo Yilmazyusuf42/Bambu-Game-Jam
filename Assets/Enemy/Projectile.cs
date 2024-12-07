@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
         }
         if (collision.CompareTag("Car"))
         {
-            TheCar.carHealth -= 20f;
+            TheCar.carHealth -= damage;
             Destroy(gameObject);
         }
     }
