@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     private float lastDodgeTime = -Mathf.Infinity;
 
 
-
+    private bool isOnLadder;
     private Rigidbody2D rb;
     private Animator animator;
     private float playerScale;
@@ -144,5 +144,10 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     {
         animator.SetBool(AnimationKey.Player_Is_Dodging, false);
         isDodging = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
     }
 }
