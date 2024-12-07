@@ -7,6 +7,7 @@ public class CrewMember : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private GameObject uiPrefab;
     [SerializeField] private Canvas worldSpaceCanvas;
+    [SerializeField] private float yOffSet = 2f;
 
     private GameObject instantiatedUI;
     private Transform target;
@@ -56,13 +57,12 @@ public class CrewMember : MonoBehaviour
 
     void SetUIPosition()
     {
-        instantiatedUI.transform.position = transform.position + new Vector3(0, 2f,0);
+        instantiatedUI.transform.position = transform.position + new Vector3(0, yOffSet,0);
     }
 
     private void OnCrewMemberRecruited()
     {
         target = movePoints[targetCount];
-
     }
 
     private void AddToCrew()

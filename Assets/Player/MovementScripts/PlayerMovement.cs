@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
+        
         playerScale = transform.localScale.x;  
     }
     private void Move()
