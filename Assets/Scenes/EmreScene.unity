@@ -697,7 +697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7183bf7839580e4180538c1039256ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryUI: {fileID: 62866184}
+  Inventory: 0
+  InventoryUIImage: {fileID: 0}
 --- !u!1001 &521598442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1363,8 +1364,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -981.09, y: -539.88}
+  m_SizeDelta: {x: 1.4758, y: 1.3566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1035218031
 MonoBehaviour:
@@ -1964,6 +1965,18 @@ PrefabInstance:
     - target: {fileID: 5814784163775332827, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898948943891221551, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898948943891221551, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898948943891221551, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8898948943891221551, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
       propertyPath: m_LocalPosition.x

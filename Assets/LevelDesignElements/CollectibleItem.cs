@@ -2,43 +2,43 @@ using UnityEngine;
 
 public class CollectibleItem : MonoBehaviour
 {
-    bool collectable =false;
-
+    private bool collectable = false;
     private GameObject playerObject;
+
+    [SerializeField] private Sprite itemSprite; // Ýtemin sprite'ý (Görseli)
 
     private void Start()
     {
-
+        itemSprite = GetComponent<Sprite>();    
     }
 
-    void Update()
+    private void Update()
     {
-        if (collectable && Input.GetKeyDown(KeyCode.E) && !PlayerInventory.Inventory)
+        if (collectable && Input.GetKeyDown(KeyCode.E) && !PlayerInventory.instance.Inventory)
         {
             if (playerObject != null)
             {
-                PlayerInventory.Inventory = true;
+                PlayerInventory.instance.Inventory = true;
+                PlayerInventory.instance.InventoryUIImage.sprite = itemSprite; // Görseli UI'ye ata
+                Debug.Log("Ýtem alýndý ve UI güncellendi");
                 Destroy(gameObject);
-
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 8)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player")) // Oyuncu layer'ýný kontrol et
         {
-            Debug.Log("Oyuncuuu");
-
+            Debug.Log("Oyuncu yakýnlaþtý");
             playerObject = other.gameObject;
             collectable = true;
-
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.layer == 8)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             playerObject = null;
             collectable = false;
