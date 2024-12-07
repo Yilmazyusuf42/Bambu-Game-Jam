@@ -1472,6 +1472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2025006249069439111}
   - component: {fileID: 836655088194790213}
+  - component: {fileID: 3426662449989247331}
   m_Layer: 0
   m_Name: merdiven
   m_TagString: Untagged
@@ -1488,9 +1489,9 @@ Transform:
   m_GameObject: {fileID: 5895392622718553156}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 3.69, y: -1.16, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4360204867314067232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1535,17 +1536,62 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b2e7f80a95b9d60459aa6901944798d8, type: 3}
+  m_Sprite: {fileID: 1909313684, guid: b2e7f80a95b9d60459aa6901944798d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 38.399998, y: 21.599998}
+  m_Size: {x: 1.62, y: 9.66}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &3426662449989247331
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5895392622718553156}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.05484003, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.62, y: 9.66}
+    newSize: {x: 1.62, y: 9.66}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.2780738, y: 9.66}
+  m_EdgeRadius: 0
 --- !u!1 &6264413727498016573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,7 +2050,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -37.21, y: 15.5, z: -0.5077255}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3447216020914070561}
@@ -2293,9 +2339,10 @@ PolygonCollider2D:
       - {x: 12.13509, y: -1.3997579}
       - {x: 9.747068, y: -1.3838096}
       - {x: 7.6229424, y: -1.3485714}
-      - {x: 7.328415, y: 0.22075295}
-      - {x: 5.03785, y: 0.27396798}
-      - {x: 5.0957685, y: -0.81151235}
+      - {x: 7.3394356, y: 0.26484132}
+      - {x: 5.3678856, y: 0.3539009}
+      - {x: 5.3705335, y: 0.12945676}
+      - {x: 5.3273244, y: -0.86940134}
       - {x: 6.5411925, y: -0.997517}
       - {x: 7.6514125, y: -2.4745133}
       - {x: 8.200651, y: -2.4874396}
@@ -2310,7 +2357,7 @@ PolygonCollider2D:
       - {x: -14.532057, y: -5.7522445}
       - {x: -12.530502, y: -5.764778}
       - {x: -11.511705, y: -5.801447}
-      - {x: -11.232633, y: -7.2467265}
+      - {x: -11.593831, y: -7.097997}
       - {x: 10.463287, y: -7.1647344}
       - {x: 12.946525, y: -6.6034517}
       - {x: 8.115438, y: -5.5910993}
@@ -2319,8 +2366,8 @@ PolygonCollider2D:
       - {x: -1.7819597, y: -5.54335}
       - {x: -11.477509, y: -5.3182087}
       - {x: -11.355205, y: -1.059259}
-      - {x: 2.9302647, y: -1.0284283}
-      - {x: 2.8577209, y: 0.4196009}
+      - {x: 1.9895718, y: -0.99948335}
+      - {x: 2.0328078, y: 0.28935093}
       - {x: -2.8996654, y: 0.26773635}
       - {x: -11.797624, y: 0.3195933}
   m_UseDelaunayMesh: 0
