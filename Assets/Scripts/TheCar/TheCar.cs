@@ -154,7 +154,7 @@ public class TheCar : MonoBehaviour
             if (Input.GetMouseButton(0) && fireTimer < 0)
             {
                 Missle newMissle = Instantiate(missle, misslePlace.position, Quaternion.identity).GetComponent<Missle>();
-                ScreenShake.Instance.Shake();
+                //ScreenShake.Instance.Shake();
                 newMissle.AdjustTheMissle(mousePos, missleDamage);
                 fireTimer = fireStandBy;
                 TaretHeatUp();
