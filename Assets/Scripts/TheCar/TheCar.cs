@@ -15,15 +15,17 @@ public class TheCar : MonoBehaviour
     [SerializeField] private Transform misslePlace;
 
     [Space(10)]
+
+    [Header("Car Attributes")]
     [SerializeField] private float carHealt;
     [SerializeField] private float aracYurur;
     [SerializeField] private float mazot;
     [SerializeField] private float mazotUsage;
 
+
     bool mazotOk = true;
     bool carHealthOk = true;
     bool yururOk = true;
-
 
 
     [Space(10)]
@@ -40,6 +42,8 @@ public class TheCar : MonoBehaviour
     float taretCurrentHeat = 0;
     float fireTimer;
     SpriteRenderer taretSprite;
+
+    [Header("Gears Level Speed")]
     [SerializeField] private float gear1Speed;
     [SerializeField] private float gear2Speed;
 
@@ -84,6 +88,10 @@ public class TheCar : MonoBehaviour
         taretHeatStatus();
         mazotRunsOut();
     }
+
+
+
+    #region TaretActions
 
     private void taretHeatStatus()
     {
@@ -157,28 +165,13 @@ public class TheCar : MonoBehaviour
         taretCurrentHeat = 0;
     }
 
-
-
-    private Vector3 takeMousePos()
-    {
-        mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        mousePos.z = 0;
-        return mousePos;
-    }
-
-    // Can car go ?
-    bool canGo()
-    {
-
-        if (mazotOk && yururOk && carHealthOk)
-            return true;
-        else
-            return false;
-    }
+    #endregion
 
 
 
+
+
+    #region Health Actions
     public void CartakingDamage(float _damage)
     {
         if (carHealt > 0)
@@ -199,8 +192,9 @@ public class TheCar : MonoBehaviour
         carHealthOk = true;
         healthBar.SetCurrentHealth(carHealt);
     }
+    #endregion
 
-
+    #region Yurur Actions
     public void DamagedYurur(float _damage)
     {
         aracYurur -= _damage;
@@ -221,7 +215,9 @@ public class TheCar : MonoBehaviour
         Debug.Log(aracYurur);
 
     }
+    #endregion
 
+    #region Mazot Actions
 
     void mazotRunsOut()
     {
@@ -241,6 +237,7 @@ public class TheCar : MonoBehaviour
         mazotOk = true;
     }
 
+    #endregion
 
     // Velocity of the Car
     private void Movement()
@@ -251,7 +248,23 @@ public class TheCar : MonoBehaviour
         }
     }
 
+    private Vector3 takeMousePos()
+    {
+        mousePos = Input.mousePosition;
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        mousePos.z = 0;
+        return mousePos;
+    }
 
+    // Can car go ?
+    bool canGo()
+    {
+
+        if (mazotOk && yururOk && carHealthOk)
+            return true;
+        else
+            return false;
+    }
 
     #region  Gear
     // Aracın fitesine göre hızını değiştirildiği kısım
