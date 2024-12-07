@@ -26,6 +26,7 @@ public class CarDriveTriggerSystem : TriggerSystem
         if (isPlayerInTrigger && Input.GetKeyDown(KeyCode.Alpha1))
         {
             OnPlayerStartedToDrive?.Invoke();
+            print("ARABAya BÝNDÝ");
             uiElement.SetActive(false);
             getOutFromCar.SetActive(true);
             isDriving = true;
@@ -34,6 +35,7 @@ public class CarDriveTriggerSystem : TriggerSystem
         if (isPlayerInTrigger && isDriving && Input.GetKeyDown(KeyCode.Alpha2) && car.IsHandBreakActive())
         {
             OnPlayerStoppedToDrive?.Invoke();
+            print("ARABADAN ÝNDÝ");
             getOutFromCar.SetActive(false);
             uiElement.SetActive(true);
             isDriving = false;

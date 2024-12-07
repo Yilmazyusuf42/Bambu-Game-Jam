@@ -173,19 +173,26 @@ public class TheCar : MonoBehaviour
         fireTimer -= Time.deltaTime;
         Movement();
 
-        if (Input.GetKey(KeyCode.P))
-            isBraking = true;
-        else
-            isBraking = false;
 
-        if (Input.GetKeyDown(KeyCode.O))
-            ToggleHandbrake();
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            gearUp();
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            gearDown();
+        if (playerIsInDriverSeat)
+        {
+            if (Input.GetKey(KeyCode.P))
+                isBraking = true;
+            else
+                isBraking = false;
+
+            if (Input.GetKeyDown(KeyCode.O))
+                ToggleHandbrake();
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                gearUp();
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                gearDown();
+        }
+
 
         controllingTaret = playerIsInDriverSeat;
 
