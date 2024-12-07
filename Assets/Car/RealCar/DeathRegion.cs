@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class DeathRegion : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
+        if (collision.CompareTag("Enemy"))
+        {
+            TheCar.aracYurur -= 20;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            
+        }
     }
 }

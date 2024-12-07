@@ -17,8 +17,8 @@ public class TheCar : MonoBehaviour
     [Space(10)]
 
     [Header("Car Attributes")]
-    [SerializeField] private float carHealt;
-    [SerializeField] private float aracYurur;
+    public static float carHealth;
+    public static float aracYurur;
     [SerializeField] private float mazot;
     [SerializeField] private float mazotUsage;
 
@@ -106,7 +106,7 @@ public class TheCar : MonoBehaviour
         taretSprite = taret.GetComponent<SpriteRenderer>();
         orjSpriteColor = taretSprite.color;
 
-        healthBar.SetMaxHealth(carHealt);
+        healthBar.SetMaxHealth(carHealth);
         mazotBar.SetMaxMazot(mazot);
         yururBar.SetMaxYurur(aracYurur);
 
@@ -143,7 +143,7 @@ public class TheCar : MonoBehaviour
     {
         if (taretCurrentHeat > 0)
             taretCurrentHeat -= taretHeatDown * Time.deltaTime;
-        Debug.Log(taretCurrentHeat);
+        //Debug.Log(taretCurrentHeat);
         taretSprite.color = Color.Lerp(orjSpriteColor, Color.red, taretCurrentHeat);
     }
 
@@ -220,23 +220,23 @@ public class TheCar : MonoBehaviour
     #region Health Actions
     public void CartakingDamage(float _damage)
     {
-        if (carHealt > 0)
-            carHealt -= _damage;
-        healthBar.SetCurrentHealth(carHealt);
-        Debug.Log(carHealt);
-        if (carHealt < 0)
+        if (carHealth > 0)
+            carHealth -= _damage;
+        healthBar.SetCurrentHealth(carHealth);
+        Debug.Log(carHealth);
+        if (carHealth < 0)
             carHealthOk = false;
     }
 
 
     public void CarTakeHealth(float _health)
     {
-        if (carHealt + _health > 100)
-            carHealt = 100f;
+        if (carHealth + _health > 100)
+            carHealth = 100f;
         else
-            carHealt += _health;
+            carHealth += _health;
         carHealthOk = true;
-        healthBar.SetCurrentHealth(carHealt);
+        healthBar.SetCurrentHealth(carHealth);
     }
     #endregion
 
