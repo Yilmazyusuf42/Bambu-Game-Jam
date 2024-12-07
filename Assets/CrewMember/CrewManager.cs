@@ -21,7 +21,9 @@ public class CrewManager : MonoBehaviour
 
     private void OnCrewMemberSaved(CrewMember member)
     {
+        member.StopRunningAnimation();
         member.transform.position = standPointsForCrewMembers[memberCount].transform.position;
+        member.transform.SetParent(standPointsForCrewMembers[memberCount].transform);
         ++memberCount;
     }
 }
