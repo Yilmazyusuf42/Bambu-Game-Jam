@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CrewMember : MonoBehaviour
 {
+    public static Action<CrewMember> OnCrewMemberSaved;
+
     [SerializeField] private List<Transform> movePoints;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private GameObject uiPrefab;
@@ -12,6 +15,12 @@ public class CrewMember : MonoBehaviour
     private GameObject instantiatedUI;
     private Transform target;
     private int targetCount =0;
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Start()
     {
@@ -32,6 +41,7 @@ public class CrewMember : MonoBehaviour
         Vector3 dir = (target.position - transform.position).normalized;
 
         transform.position += moveSpeed * Time.deltaTime * dir;
+
         if (Vector2.Distance(transform.position, target.position) <= 0.1f)
         {
             
@@ -67,7 +77,8 @@ public class CrewMember : MonoBehaviour
 
     private void AddToCrew()
     {
-        print(gameObject.name + " added to crew");
+        target = null;
+        OnCrewMemberSaved?.Invoke(this);
     }
 
 
@@ -75,6 +86,7 @@ public class CrewMember : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<IPlayerRecruit>(out var player))
         {
+            print("trigger'a girdi");
             player.CanRecruit = true;
             instantiatedUI.gameObject.SetActive(true);
         }
