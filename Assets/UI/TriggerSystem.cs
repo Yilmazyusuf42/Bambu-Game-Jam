@@ -17,7 +17,6 @@ public class TriggerSystem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("ALooo Player");
         if (other.gameObject.layer == 8) // Oyuncuyu tespit etmek için Tag kontrolü
         {
             isPlayerInTrigger = true;

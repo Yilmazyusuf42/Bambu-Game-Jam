@@ -2,17 +2,46 @@ using UnityEngine;
 
 public class CollectibleItem : MonoBehaviour
 {
-    public bool inventoryFull = false; // Envanterin dolu olup olmadýðýný kontrol eder
-    public int playerLayer; // Oyuncunun layer'ýný buraya tanýmla
+    bool collectable =false;
+
+    private GameObject playerObject;
 
     private void Start()
     {
-        // Oyuncu layer'ýný bir kez belirle (örneðin "Player" layer'ý 8. sýradaysa bunu Unity'den ayarlamalýsýn)
-        playerLayer = LayerMask.NameToLayer("Items");
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void Update()
     {
+        if (collectable && Input.GetKeyDown(KeyCode.E) && !PlayerInventory.Inventory)
+        {
+            if (playerObject != null)
+            {
+                PlayerInventory.Inventory = true;
+                Destroy(gameObject);
 
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 8)
+        {
+            Debug.Log("Oyuncuuu");
+
+            playerObject = other.gameObject;
+            collectable = true;
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 8)
+        {
+            playerObject = null;
+            collectable = false;
+        }
     }
 }
