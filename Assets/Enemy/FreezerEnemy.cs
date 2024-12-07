@@ -12,7 +12,14 @@ public class FreezerEnemy : MonoBehaviour
     private Transform player;               // Oyuncu referansý
     private Rigidbody2D playerRb;           // Oyuncunun Rigidbody2D'si
     private bool isFreezing = false;        // Oyuncuyu dondurma durumu
-    private float freezeTimer = 0f;         // Dondurma süresi
+    private float freezeTimer = 0f;
+
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -37,31 +44,25 @@ public class FreezerEnemy : MonoBehaviour
 
     void MoveNearPlayer()
     {
-        // Eðer oyuncu algýlandýysa ve oyuncuya doðru hareket etmesi gerekiyorsa
+
         if (player != null)
         {
-            // Oyuncuya olan mesafeyi hesapla
+
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-            // Eðer mesafe freeze mesafesinden büyükse, oyuncuya doðru hareket et
+
             if (distanceToPlayer > freezeDistance)
             {
-
+                animator.SetBool(AnimationKey.Is_Running, true);
                 Vector2 direction = (player.position - transform.position).normalized;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
 
                 if (direction.x != 0)
                 {
                     Vector3 scale = transform.localScale;
-                    scale.x = direction.x > 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+                    scale.x = direction.x > 0 ? Mathf.Abs(scale.x) : - Mathf.Abs(scale.x);
                     transform.localScale = scale;
                 }
-            }
-            // Eðer mesafe freeze mesafesine yakýnsa, duraklama baþlat
-            else
-            {
-                // Oyuncuya yaklaþma duraklatýlabilir, baþka bir iþlem yapýlabilir
-                // Eðer burada baþka bir þey yapmak isterseniz ekleyebilirsiniz
             }
         }
     }

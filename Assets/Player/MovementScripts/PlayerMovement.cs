@@ -1,9 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(InputReceiver))]
 
 public class PlayerMovement : MonoBehaviour,IPlayerMovement
 {
+    [SerializeField] private Transform driverSeat;
+    [SerializeField] private Transform getOffPoint;
+    private bool isDriving;
+    private float initialMass;
 
     [Header("*** MOVE ***")]
     [SerializeField] protected float moveSpeed;
@@ -42,7 +47,9 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         
-        playerScale = transform.localScale.x;  
+        playerScale = transform.localScale.x;
+
+        initialMass = rb.mass;
     }
     private void Move()
     {
@@ -73,11 +80,17 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void Animate()
     {
-        animator.SetBool(AnimationKey.Player_Is_Running, !(rb.velocity.x == 0));
+        animator.SetBool(AnimationKey.Is_Running, !(rb.velocity.x == 0));
     }
 
     private void Update()
     {
+        if (isDriving)
+        {
+            transform.position = driverSeat.transform.position;
+            return;
+        }
+
         isGrounded = GroundCheck();
 
         if (isDodging)
@@ -126,7 +139,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     {
         Vector2 moveDirection = new(InputReceiver.Instance.GetMoveDirection(), 0);
         //if character does not move dash towards its own direction.Else dash according to movement.
-        return !moveDirection.Equals(Vector2.zero) ? new Vector2(moveDirection.x, 0) : new Vector2(-transform.localScale.x, 0).normalized;
+        return !moveDirection.Equals(Vector2.zero) ? new Vector2(moveDirection.x, 0).normalized : new Vector2(-transform.localScale.x, 0).normalized;
     }
 
     private void StartDodge()
@@ -174,4 +187,33 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
             canClimb = false;
         }
     }
+
+
+    private void OnEnable()
+    {
+        CarDriveTriggerSystem.OnPlayerStartedToDrive += OnPlayerStartedToDrive;
+        CarDriveTriggerSystem.OnPlayerStoppedToDrive += OnPlayerStoppedToDrive;
+    }
+
+    private void OnDisable()
+    {
+        CarDriveTriggerSystem.OnPlayerStartedToDrive -= OnPlayerStartedToDrive;
+        CarDriveTriggerSystem.OnPlayerStoppedToDrive -= OnPlayerStoppedToDrive;
+    }
+
+    private void OnPlayerStoppedToDrive()
+    {
+        transform.position = getOffPoint.position;
+        rb.mass = initialMass;
+        isDriving = false;
+    }
+
+    private void OnPlayerStartedToDrive()
+    {
+        transform.position = driverSeat.position;
+        rb.mass = 0;
+        isDriving = true;
+    }
 }
+
+

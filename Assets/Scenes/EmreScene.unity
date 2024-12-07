@@ -697,8 +697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7183bf7839580e4180538c1039256ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InventoryUIImage: {fileID: 1035218031}
   Inventory: 0
-  InventoryUIImage: {fileID: 0}
 --- !u!1001 &521598442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1011,7 +1011,6 @@ GameObject:
   - component: {fileID: 721293529}
   - component: {fileID: 721293528}
   - component: {fileID: 721293527}
-  - component: {fileID: 721293530}
   - component: {fileID: 721293531}
   m_Layer: 15
   m_Name: Fuel
@@ -1132,19 +1131,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &721293530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721293526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9939c1214465434ab3e9741e33af2f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiElement: {fileID: 0}
 --- !u!114 &721293531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1157,6 +1143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3069b78ba09b94444997c4ef8b27ba1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSprite: {fileID: 21300000, guid: 0c85679116d22dd4fb9c0825de93df4b, type: 3}
 --- !u!1 &782710548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,6 +1945,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5091672327574659171, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5191210655486718875, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
       propertyPath: climbSpeed
       value: 100

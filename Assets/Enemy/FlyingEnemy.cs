@@ -5,18 +5,27 @@ using UnityEngine;
 public class FlyingEnemy : MonoBehaviour
 {
     [Header("*** Attack Settings ***")]
-    public float moveSpeed = 3f;           // Düþman hareket hýzý
-    public float maxDistance = 7f;         // Oyuncuya yaklaþmasý gereken en uzak mesafe
-    public float minDistance = 3f;         // Oyuncudan uzaklaþmasý gereken en yakýn mesafe
-    public float fireDistance = 4f;        // Ateþ etme mesafesi
-    public float detectionRange = 10f;     // Düþmanýn oyuncuyu algýlayacaðý mesafe
-    public float attackDelay = 1f;         // Saldýrý gecikmesi
+    public float moveSpeed = 3f;
+    public float maxDistance = 7f;
+    public float minDistance = 3f;
+    public float fireDistance = 4f;
+    public float detectionRange = 10f;
+    public float attackCooldown = 1f;
+
+    [SerializeField] private Transform shootPoint;
 
     [Header("*** Projectile Settings ***")]
-    public GameObject projectilePrefab;    // Fýrlatýlacak mermi prefab'ý
-    public float projectileSpeed = 5f;     // Merminin fýrlatma hýzý
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 5f;
 
-    private bool isAttacking = false;      // Saldýrý durumu
+    private bool canAttack = true;
+    private Transform player;
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -25,7 +34,7 @@ public class FlyingEnemy : MonoBehaviour
 
         if (playerCollider != null)
         {
-            Transform player = playerCollider.transform;
+            player = playerCollider.transform;
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
             // Oyuncuya olan mesafeye göre hareket et
@@ -36,10 +45,13 @@ public class FlyingEnemy : MonoBehaviour
             }
 
             // Eðer ateþ mesafesindeyse ateþ et
-            if (distanceToPlayer <= fireDistance && !isAttacking)
+            if (distanceToPlayer <= fireDistance && canAttack)
             {
-                AttackPlayer(player);
+                canAttack = false;
+                animator.SetTrigger("Attack");
+
             }
+            Rotate();
         }
     }
 
@@ -49,28 +61,28 @@ public class FlyingEnemy : MonoBehaviour
         Vector2 direction = (player.position - transform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
 
-        if (direction.x != 0)
-        {
-            Vector3 scale = transform.localScale;
-            scale.x = direction.x > 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
-            transform.localScale = scale;
-        }
+
     }
 
-    void AttackPlayer(Transform player)
+    void Rotate()
     {
-        if (!isAttacking)
-        {
-            StartCoroutine(AttackCooldown(player));
-        }
+        Vector2 direction = (player.position - transform.position).normalized;
+        Vector3 scale = transform.localScale;
+        scale.x = player.position.x > transform.position.x ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+        transform.localScale = scale;
+    }
+
+    void AttackPlayer()
+    {
+        StartCoroutine(AttackCooldown(player));
     }
 
     IEnumerator AttackCooldown(Transform player)
     {
-        isAttacking = true;
+        canAttack = false;
 
         // Mermi instantiate et ve oyuncuya doðru fýrlat
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
         Vector2 direction = (player.position - transform.position).normalized;
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
@@ -78,14 +90,10 @@ public class FlyingEnemy : MonoBehaviour
         {
             rb.velocity = direction * projectileSpeed;
         }
-
-        Debug.Log("Firing!");
-
-        // Saldýrýdan sonra bir süre bekle
-        yield return new WaitForSeconds(attackDelay);
-
         // Saldýrý durumu sýfýrlanýr
-        isAttacking = false;
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
+
     }
 
     // Görüþ alanýný görsel olarak göstermek için yardýmcý bir fonksiyon (editor'de görsel gösterim için)

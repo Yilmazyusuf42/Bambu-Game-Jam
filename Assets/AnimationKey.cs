@@ -1,6 +1,6 @@
 public static class AnimationKey
 {
-    public static string Player_Is_Running = "isRunning";
+    public static string Is_Running = "isRunning";
 
     public static string Player_Is_Dodging = "isDodging";
 

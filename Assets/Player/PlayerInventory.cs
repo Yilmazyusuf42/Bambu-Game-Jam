@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,25 +5,31 @@ public class PlayerInventory : MonoBehaviour
 {
     public static PlayerInventory instance;
 
+    public Image InventoryUIImage;
+
+    public bool Inventory = false;
+
     private void Awake()
     {
         instance = this;
     }
 
 
-    public bool Inventory = false;
 
-    public void UpdateInventoryUI()
+
+    public void UpdateInventoryUI(Sprite sprite)
     {
         if (InventoryUIImage != null)
         {
             InventoryUIImage.gameObject.SetActive(Inventory);
+            InventoryUIImage.sprite = sprite;
+            print("BURAYA GÝRDÝ");
         }
     }
 
     //public Sprite InventoryImage;
 
-    public Image InventoryUIImage;
+
 
     private void Update()
     {

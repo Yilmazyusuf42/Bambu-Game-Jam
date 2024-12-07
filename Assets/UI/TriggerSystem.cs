@@ -1,39 +1,43 @@
+using System;
 using UnityEngine;
 
 public class TriggerSystem : MonoBehaviour
 {
-    public GameObject uiElement; // UI panelini buraya baðlayýn
-    //public GameObject playerCar; // Oyuncu arabasýný buraya baðlayýn
+    [SerializeField] protected GameObject uiElement;
 
+    protected bool isPlayerInTrigger = false;
 
-    bool isPlayerInTrigger = false; // Oyuncunun trigger içinde olup olmadýðýný takip eder
-
-    void Start()
+    protected virtual void Start()
     {
-        // UI baþlangýçta kapalý
         if (uiElement != null)
             uiElement.SetActive(false);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 8) // Oyuncuyu tespit etmek için Tag kontrolü
+        if (other.gameObject.layer == 8)
         {
             isPlayerInTrigger = true;
             if (uiElement != null)
+            {
                 uiElement.SetActive(true);
+            }
+
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    protected virtual void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.layer == 8)
         {
             isPlayerInTrigger = false;
             if (uiElement != null)
+            {
                 uiElement.SetActive(false);
+            }
         }
     }
+
 
 
 }

@@ -12,7 +12,6 @@ public class Wheel : MonoBehaviour
     public LayerMask groundLayer; // Zemin katmaný
 
     private float suspensionCompression = 0f; // Süspansiyonun sýkýþma miktarý
-    private float previousHeight = 0f; // Önceki yerden yükseklik deðeri
 
     private void LateUpdate()
     {

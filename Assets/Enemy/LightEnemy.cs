@@ -41,14 +41,14 @@ public class LightEnemy : MonoBehaviour
 
         if (direction.x != 0)
         {
-            animator.SetBool("isRunning", true);
+            animator.SetBool(AnimationKey.Is_Running, true);
             Vector3 scale = transform.localScale;
             scale.x = direction.x > 0 ? Mathf.Abs(scale.x) :  - Mathf.Abs(scale.x);
             transform.localScale = scale;
         }
         else
         {
-            animator.SetBool("isRunning", false);
+            animator.SetBool(AnimationKey.Is_Running, false);
         }
     }
 

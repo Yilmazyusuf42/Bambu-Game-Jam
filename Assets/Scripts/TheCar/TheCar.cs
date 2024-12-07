@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -21,7 +22,6 @@ public class TheCar : MonoBehaviour
     public static float aracYurur;
     [SerializeField] private float mazot;
     private float mazotUsage;
-    [SerializeField] private float maxSpeed = 10f; // Maksimum hız.
 
 
     bool mazotOk = true;
@@ -62,7 +62,7 @@ public class TheCar : MonoBehaviour
 
     bool isBraking =false;
 
-    // Start is called before the first frame update
+    private bool playerIsInDriverSeat;
     void Start()
     {
         carRigidbody = GetComponent<Rigidbody2D>();
@@ -120,10 +120,8 @@ public class TheCar : MonoBehaviour
     {
         foreach (Transform wheel in wheelsList)
         {
-            // Wheel objesinin Rigidbody2D bileşenini alıyoruz
             Rigidbody2D wheelRigidbody2D = wheel.GetComponent<Rigidbody2D>();
 
-            // Eğer wheel objesinde Rigidbody2D varsa, tork uyguluyoruz
             if (wheelRigidbody2D != null)
             {
                 wheelRigidbody2D.AddTorque(speed * Time.fixedDeltaTime);
@@ -186,9 +184,7 @@ public class TheCar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
             gearDown();
 
-
-        if (Input.GetKeyDown(KeyCode.E))
-            TaretOnOff();
+        controllingTaret = playerIsInDriverSeat;
 
         ControlTheTaret();
         FiringTheMissle();
@@ -240,14 +236,6 @@ public class TheCar : MonoBehaviour
         }
     }
 
-
-    private void TaretOnOff()
-    {
-        if (controllingTaret == false)
-            controllingTaret = true;
-        else if (controllingTaret == true)
-            controllingTaret = false;
-    }
 
     private void TaretHeatUp()
     {
@@ -350,6 +338,11 @@ public class TheCar : MonoBehaviour
     // Velocity of the Car
     private void Movement()
     {
+        if (!playerIsInDriverSeat)
+        {
+            return;
+        }
+
         if(isBraking)
         {
             ApplyBrake();
@@ -418,4 +411,44 @@ public class TheCar : MonoBehaviour
     }
 
     #endregion
+
+
+
+    private void OnEnable()
+    {
+        CarDriveTriggerSystem.OnPlayerStartedToDrive += Car_OnPlayerStartedToDrive;
+        CarDriveTriggerSystem.OnPlayerStoppedToDrive += Car_OnPlayerStoppedToDrive;
+        FuelTriggerSystem.OnFuelGained += Car_OnFuelGained;
+    }
+
+
+
+    private void OnDisable()
+    {
+        CarDriveTriggerSystem.OnPlayerStartedToDrive -= Car_OnPlayerStartedToDrive;
+        CarDriveTriggerSystem.OnPlayerStoppedToDrive -= Car_OnPlayerStoppedToDrive;
+        FuelTriggerSystem.OnFuelGained -= Car_OnFuelGained;
+    }
+
+    private void Car_OnPlayerStoppedToDrive()
+    {
+       playerIsInDriverSeat = false;
+    }
+
+    private void Car_OnFuelGained(int amount)
+    {
+        mazotAdd(amount);
+        print("mazot geldi");
+        mazotBar.SetCurrentMazot(mazot);
+    }
+
+    private void Car_OnPlayerStartedToDrive()
+    {
+        playerIsInDriverSeat = true;
+    }
+
+    public bool IsHandBreakActive()
+    {
+        return isHandbrakeActive;
+    }
 }

@@ -19,7 +19,7 @@ public class CollectibleItem : MonoBehaviour
             if (playerObject != null)
             {
                 PlayerInventory.instance.Inventory = true;
-                PlayerInventory.instance.InventoryUIImage.sprite = itemSprite; // Görseli UI'ye ata
+                PlayerInventory.instance.UpdateInventoryUI(itemSprite);
                 
                 Destroy(gameObject);
             }
