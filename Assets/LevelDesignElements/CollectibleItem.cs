@@ -9,7 +9,7 @@ public class CollectibleItem : MonoBehaviour
 
     private void Start()
     {
-        itemSprite = GetComponent<Sprite>();    
+        itemSprite = GetComponent<SpriteRenderer>().sprite;    
     }
 
     private void Update()
@@ -20,7 +20,7 @@ public class CollectibleItem : MonoBehaviour
             {
                 PlayerInventory.instance.Inventory = true;
                 PlayerInventory.instance.InventoryUIImage.sprite = itemSprite; // Görseli UI'ye ata
-                Debug.Log("Ýtem alýndý ve UI güncellendi");
+                
                 Destroy(gameObject);
             }
         }

@@ -15,6 +15,13 @@ public class PlayerInventory : MonoBehaviour
 
     public bool Inventory = false;
 
+    public void UpdateInventoryUI()
+    {
+        if (InventoryUIImage != null)
+        {
+            InventoryUIImage.gameObject.SetActive(Inventory);
+        }
+    }
 
     //public Sprite InventoryImage;
 
