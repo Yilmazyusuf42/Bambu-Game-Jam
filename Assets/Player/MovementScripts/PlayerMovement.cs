@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(InputReceiver))]
 
 public class PlayerMovement : MonoBehaviour,IPlayerMovement
 {
+    [SerializeField] private GameObject playerUI;
     [SerializeField] private Transform driverSeat;
     [SerializeField] private Transform getOffPoint;
     private bool isDriving;
@@ -203,6 +206,8 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void OnPlayerStoppedToDrive()
     {
+
+        StartCoroutine(SlowApproach(-2));
         transform.position = getOffPoint.position;
         rb.mass = initialMass;
         isDriving = false;
@@ -210,10 +215,45 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void OnPlayerStartedToDrive()
     {
+        StartCoroutine(SlowApproach(2));
         animator.SetBool(AnimationKey.Is_Running, false);
         transform.position = driverSeat.position;
         rb.mass = 0;
         isDriving = true;
+    }
+
+    private IEnumerator SlowApproach(float targetIncrease)
+    {
+        Camera mainCam = Camera.main;
+        float initialSize = mainCam.orthographicSize; // Kameranın başlangıç boyutu
+        float targetSize = initialSize + targetIncrease; // Hedef boyut
+        float elapsedTime = 0f;
+
+        Vector3 initialPosition = mainCam.transform.position; // Kameranın başlangıç pozisyonu
+
+        while (elapsedTime < 1f)
+        {
+            // Kamera boyutunu düzgün bir şekilde arttır
+            mainCam.orthographicSize = Mathf.Lerp(initialSize, targetSize, elapsedTime / 1f);
+
+            // Kamera pozisyonunu ortografik boyuta göre güncelle
+            mainCam.transform.position = new Vector3(
+                initialPosition.x,
+                transform.position.y + mainCam.orthographicSize - initialSize, // Oyuncuyu merkezde tut
+                initialPosition.z
+            );
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Hedef boyut ve pozisyonu tam olarak ayarla
+        mainCam.orthographicSize = targetSize;
+        mainCam.transform.position = new Vector3(
+            initialPosition.x,
+            transform.position.y + targetSize - initialSize,
+            initialPosition.z
+        );
     }
 }
 

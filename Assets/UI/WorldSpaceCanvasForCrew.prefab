@@ -114,6 +114,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1234149116017616716, guid: da0b0db70c59c934aa665c839c06cd63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2015245893831764996, guid: da0b0db70c59c934aa665c839c06cd63, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

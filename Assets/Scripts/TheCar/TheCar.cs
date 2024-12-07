@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class TheCar : MonoBehaviour
 {
+    [SerializeField] private GameObject carUI;
+
     [Header(" GameObjects ")]
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private MazotBar mazotBar;
@@ -51,7 +53,7 @@ public class TheCar : MonoBehaviour
 
     private Rigidbody2D carRigidbody;
 
-    private bool isHandbrakeActive = false;
+    private bool isHandbrakeActive = true;
     float handBreakSpeed = 2f;
 
     int gearLevel = 0;
@@ -442,6 +444,7 @@ public class TheCar : MonoBehaviour
 
     private void Car_OnPlayerStoppedToDrive()
     {
+        carUI.SetActive(false);
        playerIsInDriverSeat = false;
     }
 
@@ -454,6 +457,7 @@ public class TheCar : MonoBehaviour
 
     private void Car_OnPlayerStartedToDrive()
     {
+        carUI.SetActive(true);
         playerIsInDriverSeat = true;
     }
 
