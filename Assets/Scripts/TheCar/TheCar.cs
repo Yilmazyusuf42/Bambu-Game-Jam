@@ -167,7 +167,7 @@ public class TheCar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Hızımız : " + this.GetComponent<Rigidbody2D>().velocity);
+        //Debug.Log("Hızımız : " + this.GetComponent<Rigidbody2D>().velocity);
 
         //Debug.Log("Mazot Durumu : " + mazot);
 

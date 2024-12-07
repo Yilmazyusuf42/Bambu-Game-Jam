@@ -1445,7 +1445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d65fdeae5d14346b7393ebe2d08548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnitude: 0.05
   duration: 0.2
 --- !u!4 &2068149968 stripped
 Transform:
@@ -1465,21 +1464,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1151642507444726419, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2443373424135066247, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_Anchor.y
       value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 2443373424135066247, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: m_Suspension.m_DampingRatio
+      propertyPath: m_Suspension.m_Frequency
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443373424135066247, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_Suspension.m_DampingRatio
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3442917159526956093, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_Anchor.x
+      value: 8.05
       objectReference: {fileID: 0}
     - target: {fileID: 3442917159526956093, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_Anchor.y
       value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 3442917159526956093, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: m_Suspension.m_DampingRatio
+      propertyPath: m_Suspension.m_Frequency
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3442917159526956093, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_Suspension.m_DampingRatio
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3906666901279298258, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1521,37 +1536,73 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4027430404092500774, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277764468243895240, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4690955820758620024, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_Anchor.y
       value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 4690955820758620024, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: m_Suspension.m_DampingRatio
+      propertyPath: m_Suspension.m_Frequency
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690955820758620024, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_Suspension.m_DampingRatio
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5052031633848906347, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_Anchor.y
       value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 5052031633848906347, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: m_Suspension.m_DampingRatio
+      propertyPath: m_Suspension.m_Frequency
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052031633848906347, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_Suspension.m_DampingRatio
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5333345303529757883, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5354384033572069623, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_Anchor.y
       value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 5354384033572069623, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_ConnectedRigidBody
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354384033572069623, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_Suspension.m_DampingRatio
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670098898744165506, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_Anchor.x
+      value: 6.49
       objectReference: {fileID: 0}
     - target: {fileID: 6670098898744165506, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_Anchor.y
       value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 6670098898744165506, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: m_Suspension.m_DampingRatio
+      propertyPath: m_Suspension.m_Frequency
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670098898744165506, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_Suspension.m_DampingRatio
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626281163744635845, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: mazot
@@ -1574,8 +1625,12 @@ PrefabInstance:
       value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 7845162270590104305, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: m_Suspension.m_DampingRatio
+      propertyPath: m_Suspension.m_Frequency
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7845162270590104305, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_Suspension.m_DampingRatio
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8124917553282944928, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_Name
@@ -1586,11 +1641,16 @@ PrefabInstance:
       value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 8938104431706129651, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: m_Suspension.m_DampingRatio
+      propertyPath: m_Suspension.m_Frequency
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8938104431706129651, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_Suspension.m_DampingRatio
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5360439301530973281, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
