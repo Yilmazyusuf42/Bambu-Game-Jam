@@ -73,10 +73,10 @@ public class TheCar : MonoBehaviour
         fireTimer -= Time.deltaTime;
         Movement();
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
             gearUp();
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
             gearDown();
 
 
