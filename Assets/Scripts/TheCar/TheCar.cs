@@ -20,7 +20,8 @@ public class TheCar : MonoBehaviour
     [Header("Car Attributes")]
     public static float carHealth;
     public static float aracYurur;
-    [SerializeField] private float mazot;
+    [SerializeField] private float maxMazot;
+    private float currentMazot;
     private float mazotUsage;
 
 
@@ -50,8 +51,8 @@ public class TheCar : MonoBehaviour
 
     private Rigidbody2D carRigidbody;
 
-    private bool isHandbrakeActive = false; // El freninin durumu
-    float handBreakSpeed = 2f; // El frenini etkinleştirmek için hız sınırı
+    private bool isHandbrakeActive = false;
+    float handBreakSpeed = 2f;
 
     int gearLevel = 0;
     float speed;
@@ -70,10 +71,12 @@ public class TheCar : MonoBehaviour
         orjSpriteColor = taretSprite.color;
 
         healthBar.SetMaxHealth(carHealth);
-        mazotBar.SetMaxMazot(mazot);
+        mazotBar.SetMaxMazot(maxMazot);
         yururBar.SetMaxYurur(aracYurur);
 
         GetWheels();
+
+        currentMazot = maxMazot;
     }
 
     public void GetWheels()
@@ -317,19 +320,19 @@ public class TheCar : MonoBehaviour
 
     void mazotRunsOut()
     {
-        if (mazot > 0)
-            mazot -= mazotUsage;
-        mazotBar.SetCurrentMazot(mazot);
-        if (mazot <= 0)
+        if (currentMazot > 0)
+            currentMazot -= mazotUsage;
+        mazotBar.SetCurrentMazot(currentMazot);
+        if (currentMazot <= 0)
             mazotOk = false;
     }
 
     public void mazotAdd(float _mazotAmount)
     {
-        if (mazot + _mazotAmount > 100)
-            mazot = 100f;
+        if ((currentMazot + _mazotAmount) > maxMazot)
+            currentMazot = maxMazot;
         else
-            mazot += _mazotAmount;
+            currentMazot += _mazotAmount;
         mazotOk = true;
     }
 
@@ -439,7 +442,7 @@ public class TheCar : MonoBehaviour
     {
         mazotAdd(amount);
         print("mazot geldi");
-        mazotBar.SetCurrentMazot(mazot);
+        mazotBar.SetCurrentMazot(currentMazot);
     }
 
     private void Car_OnPlayerStartedToDrive()

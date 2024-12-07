@@ -43,12 +43,12 @@ GameObject:
   - component: {fileID: 5531968648751067197}
   - component: {fileID: 3311915273407623603}
   m_Layer: 8
-  m_Name: Image
+  m_Name: PRESS E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5501438986621019628
 RectTransform:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -981.09, y: -539.88}
+  m_AnchoredPosition: {x: -981.09, y: -540.4633}
   m_SizeDelta: {x: 1.4758, y: 1.3566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5531968648751067197
@@ -420,8 +420,8 @@ MonoBehaviour:
     m_Bits: 128
   rayLength: 0.5
   jumpSpeed: 20
-  dodgeDistance: 7
-  dodgeTime: 0.1
+  dodgeDistance: 8
+  dodgeTime: 0.2
   timeBetweenDodges: 1
   climbSpeed: 100
 --- !u!114 &4800022674819096033
@@ -515,8 +515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7183bf7839580e4180538c1039256ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Inventory: 0
   InventoryUIImage: {fileID: 3757999750074354169}
+  Inventory: 0
 --- !u!1 &7372631246874191889
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7355888672243527148
 RectTransform:
   m_ObjectHideFlags: 0

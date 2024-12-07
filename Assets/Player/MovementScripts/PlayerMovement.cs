@@ -210,6 +210,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void OnPlayerStartedToDrive()
     {
+        animator.SetBool(AnimationKey.Is_Running, false);
         transform.position = driverSeat.position;
         rb.mass = 0;
         isDriving = true;

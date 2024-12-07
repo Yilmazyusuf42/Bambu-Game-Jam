@@ -5,7 +5,7 @@ public class FuelTriggerSystem : TriggerSystem
 {
     public static Action<int> OnFuelGained;
 
-    private int fuelAmountToGain = 200;
+    private int fuelAmountToGain = 500;
 
     private void Update()
     {

@@ -6,7 +6,7 @@ public class Missle : MonoBehaviour
 {
     public Vector3 mousePos;
     float speed = 100f;
-    float damage = 20f;
+    private float damage = 20f;
     Rigidbody2D rb;
     Vector2 direction;
 
