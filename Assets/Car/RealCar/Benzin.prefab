@@ -15269,7 +15269,7 @@ Transform:
   m_GameObject: {fileID: 3723972087413619715}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.6714284, y: -4.01, z: 0.5077255}
+  m_LocalPosition: {x: 2.68, y: -4.01, z: 0.5077255}
   m_LocalScale: {x: 0.64065725, y: 0.64065725, z: 0.44846}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27392,8 +27392,8 @@ Transform:
   m_GameObject: {fileID: 6228460514966642266}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21, y: -0.16, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.42, y: -0.16, z: 0}
+  m_LocalScale: {x: 1.4285715, y: 1.4285715, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2150862274161477876}
@@ -38017,7 +38017,7 @@ GameObject:
   - component: {fileID: 2734590597940148736}
   - component: {fileID: 8805966786515870465}
   - component: {fileID: 6510109469678987043}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: LiquideParticle (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
