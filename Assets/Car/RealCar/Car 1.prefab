@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5438779838883884865}
   - component: {fileID: 5040885621123792783}
+  - component: {fileID: 2347289902806053580}
   m_Layer: 0
   m_Name: "\xE7ark3 \xFCst"
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 97417508797573507}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.77, y: -2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,17 +74,38 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b3978b301d45a5a40b8fa9d55cc2e78f, type: 3}
+  m_Sprite: {fileID: -756689178, guid: b3978b301d45a5a40b8fa9d55cc2e78f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 38.399998, y: 21.599998}
+  m_Size: {x: 1.4, y: 1.39}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2347289902806053580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97417508797573507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f532471505701943a5763d3a922ea75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carRigidbody: {fileID: 6210926561063344293}
+  rotationMultiplier: 10
+  suspensionStrength: 1000
+  suspensionDamping: 50
+  maxSuspensionHeight: 1
+  wheelRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &676405228630996561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1977,7 +1999,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.92, y: -8.829998, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.92, y: 0.96, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3447216020914070561}
@@ -2204,7 +2226,7 @@ MonoBehaviour:
   mazotBar: {fileID: 0}
   yururBar: {fileID: 0}
   taret: {fileID: 4697480333609111156}
-  missle: {fileID: 7584631949786805229, guid: 67f019ba278c9764886d541a0194f6a4, type: 3}
+  missle: {fileID: 7116950785579735357, guid: 4e2465fa12966e6458c50a1c86a313c2, type: 3}
   misslePlace: {fileID: 7048090882738087264}
   mazot: 100
   mazotUsage: 0.03
@@ -2425,6 +2447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5870620181016116265}
   - component: {fileID: 3632130128197797080}
+  - component: {fileID: 2442143682806108236}
   m_Layer: 0
   m_Name: "\xE7ark2 sa\u011F"
   m_TagString: Untagged
@@ -2441,7 +2464,7 @@ Transform:
   m_GameObject: {fileID: 8391418020919752783}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.27, y: -4.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2488,17 +2511,38 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: da309c785ac80a24197ad763150b1888, type: 3}
+  m_Sprite: {fileID: 1702174317, guid: da309c785ac80a24197ad763150b1888, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 38.399998, y: 21.599998}
+  m_Size: {x: 2.27, y: 2.27}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2442143682806108236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391418020919752783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f532471505701943a5763d3a922ea75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carRigidbody: {fileID: 6210926561063344293}
+  rotationMultiplier: 10
+  suspensionStrength: 1000
+  suspensionDamping: 50
+  maxSuspensionHeight: 1
+  wheelRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &9054602220206442844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2509,6 +2553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2089797962968049986}
   - component: {fileID: 7915294073811625547}
+  - component: {fileID: 1996608889418813114}
   m_Layer: 0
   m_Name: "\xE7ark1 sol"
   m_TagString: Untagged
@@ -2525,7 +2570,7 @@ Transform:
   m_GameObject: {fileID: 9054602220206442844}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -10.905, y: -3.149, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2572,14 +2617,35 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a613a6782810cdc43946efc9d35e3871, type: 3}
+  m_Sprite: {fileID: -396039208, guid: a613a6782810cdc43946efc9d35e3871, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 38.399998, y: 21.599998}
+  m_Size: {x: 1.74, y: 1.76}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1996608889418813114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054602220206442844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f532471505701943a5763d3a922ea75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carRigidbody: {fileID: 6210926561063344293}
+  rotationMultiplier: 10
+  suspensionStrength: 1000
+  suspensionDamping: 50
+  maxSuspensionHeight: 1
+  wheelRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0

@@ -13,6 +13,7 @@ public class Missle : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Destroy(this.gameObject, 1f);
     }
 
     // Update is called once per frame
@@ -21,8 +22,7 @@ public class Missle : MonoBehaviour
         rb.velocity = direction * speed;
     }
 
-
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
     }

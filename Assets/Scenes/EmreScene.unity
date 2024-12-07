@@ -804,7 +804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1bb1bca068bac4fa861e5b4657442a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedPercentage: 1
+  moveSpeedPercentage: 0.8
 --- !u!114 &709696789 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3071841549629913269, guid: 2b0a5b87bcabec04db301fd3a169214f, type: 3}
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1bb1bca068bac4fa861e5b4657442a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedPercentage: 1
+  moveSpeedPercentage: 0.8
 --- !u!1 &1208017869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,6 +1166,7 @@ GameObject:
   - component: {fileID: 1618642273}
   - component: {fileID: 1618642272}
   - component: {fileID: 1618642275}
+  - component: {fileID: 1618642276}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1260,7 +1261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2719710251033203863}
-  smoothSpeed: 2.15
+  smoothSpeed: 5
   offset: {x: 0, y: 6.5, z: -10}
   minX: -3.4028235e+38
   maxX: 3.4028235e+38
@@ -1268,6 +1269,20 @@ MonoBehaviour:
   maxY: 3.4028235e+38
   horizontalOnlyTracking: 1
   verticalOnlyTracking: 0
+--- !u!114 &1618642276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618642271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d65fdeae5d14346b7393ebe2d08548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0.05
+  duration: 0.2
 --- !u!4 &2719710251033203863 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3906666901279298258, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
@@ -1320,14 +1335,6 @@ PrefabInstance:
     - target: {fileID: 3906666901279298258, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3964261288117329111, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 3964261288117329111, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: mazotBar
