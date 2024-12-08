@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour,IPlayerCombat
 {
+    [SerializeField] private float knockbackForce;
+    [SerializeField] private GameObject bloodEffect;
     [SerializeField] private Transform attackPoint;
     [SerializeField] float attackRadius = 1f;
     [SerializeField] LayerMask enemyLayer;
@@ -54,7 +56,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
 
 
 
-    void Attack(float attackRadius, int attackDamage, float screenShakeAmount)
+    void Attack(float attackRadius, int attackDamage, float screenShakeAmount, bool heavyAttack)
     {
         Vector2 attackDirection = (Vector2)transform.up;
 
@@ -65,7 +67,20 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
             if (enemy.TryGetComponent<EnemyHealth>(out var enemyHP))
             {
                 enemyHP.TakeDamage(attackDamage);
-                ScreenShake.Instance.Shake(screenShakeAmount,0);
+                ScreenShake.Instance.Shake(screenShakeAmount, 0);
+
+                if (enemy.TryGetComponent<enemy>(out var kb))
+                {
+                    kb.KnockBack(transform.position, knockbackForce);
+                }
+
+                GameObject blood = Instantiate(bloodEffect, enemy.transform.position, Quaternion.identity);
+                if (heavyAttack)
+                {
+                    blood.transform.localScale *= 1.5f;
+                }
+
+                Destroy(blood,.2f);
             }
         }
     }
@@ -73,12 +88,12 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
 
     public void LightAttackAnimationEvent()
     {
-        Attack(attackRadius, lightAttackDamage,0.1f);
+        Attack(attackRadius, lightAttackDamage,0.1f,false);
     }
 
     public void HeavyAttackAnimationEvent()
     {
-        Attack(attackRadius, heavyAttackDamage,0.25f);
+        Attack(attackRadius, heavyAttackDamage,0.25f,true);
     }
 
 

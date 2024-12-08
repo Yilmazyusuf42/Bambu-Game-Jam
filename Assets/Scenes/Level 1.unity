@@ -466,11 +466,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &118811219 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5600716387739098804, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-  m_PrefabInstance: {fileID: 1243066055}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &126225657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,15 +1615,15 @@ PrefabInstance:
     - target: {fileID: 5191210655486718875, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
       propertyPath: getOffPos
       value: 
-      objectReference: {fileID: 2129943638}
+      objectReference: {fileID: 0}
     - target: {fileID: 5191210655486718875, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
       propertyPath: driverSeat
       value: 
-      objectReference: {fileID: 118811219}
+      objectReference: {fileID: 0}
     - target: {fileID: 5191210655486718875, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
       propertyPath: getOffPoint
       value: 
-      objectReference: {fileID: 2129943638}
+      objectReference: {fileID: 0}
     - target: {fileID: 5814784163775332827, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4069,6 +4064,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1618642273}
     - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: Gear
+      value: 
+      objectReference: {fileID: 1341683314}
+    - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: Speed
+      value: 
+      objectReference: {fileID: 1273876155}
+    - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: carUI
       value: 
       objectReference: {fileID: 1645542970}
@@ -4084,6 +4087,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1073772354}
+    - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: handbrakeUI
+      value: 
+      objectReference: {fileID: 983719196}
     - target: {fileID: 8124917553282944928, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_Name
       value: Car 1
@@ -6686,11 +6693,6 @@ Transform:
   - {fileID: 1123645713}
   m_Father: {fileID: 736515445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2129943638 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1582324104658286359, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-  m_PrefabInstance: {fileID: 1243066055}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5391550512971853742
 PrefabInstance:
   m_ObjectHideFlags: 0

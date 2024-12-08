@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemy : MonoBehaviour
+public class FlyingEnemy : enemy
 {
     [Header("*** Attack Settings ***")]
     public float moveSpeed = 3f;
@@ -57,6 +57,10 @@ public class FlyingEnemy : MonoBehaviour
 
     void MoveTowardsPlayer(Transform player)
     {
+        if (isKnockedBack)
+        {
+            return;
+        }
 
         Vector2 direction = (player.position - transform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);

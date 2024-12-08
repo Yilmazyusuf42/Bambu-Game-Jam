@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class LightEnemy : MonoBehaviour
+public class LightEnemy : enemy
 {
     public float detectionRange = 10f;
     public float attackRange = 2f;
@@ -37,6 +37,10 @@ public class LightEnemy : MonoBehaviour
 
     void MoveTowardsPlayer(Transform player)
     {
+        if (isKnockedBack)
+        {
+            return;
+        }
 
         Vector2 direction = (player.position - transform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);

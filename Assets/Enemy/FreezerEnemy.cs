@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class FreezerEnemy : MonoBehaviour
+public class FreezerEnemy : enemy
 {
     public float detectionRange = 10f;      // Algýlama mesafesi
     public float freezeDistance = 1.5f;     // Oyuncu ile durulacak mesafe
@@ -44,6 +44,10 @@ public class FreezerEnemy : MonoBehaviour
 
     void MoveNearPlayer()
     {
+        if (isKnockedBack)
+        {
+            return;
+        }
 
         if (player != null)
         {
