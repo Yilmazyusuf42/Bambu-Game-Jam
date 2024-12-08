@@ -115,7 +115,7 @@ public class CrewMember : MonoBehaviour
         target = null;
         OnCrewMemberSaved?.Invoke(this);
     }
-
+     //Selam
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
