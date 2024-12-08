@@ -6,6 +6,8 @@ public class LevelSystem : MonoBehaviour
 {
     public static LevelSystem instance;
 
+    public int xoffset;
+
     //public List<int> cameraBounders;
 
     private void Awake()
@@ -13,7 +15,9 @@ public class LevelSystem : MonoBehaviour
         instance = this;
     }
 
-    public List<GameObject> backgroundObjects;
+    GameObject Backgrounds;
+
+    //public List<GameObject> backgroundObjects;
 
     int maxLevel = 4;
 
@@ -22,6 +26,9 @@ public class LevelSystem : MonoBehaviour
     void Start()
     {
         //UpdateLevelObjects();
+        Backgrounds = this.gameObject;
+
+        maxLevel = Backgrounds.transform.childCount;
     }
 
     /*
@@ -38,48 +45,29 @@ public class LevelSystem : MonoBehaviour
             Debug.Log("Minimum seviye 1'dir. Seviyeyi 1'e ayarlýyorum.");
             level = 1;
         }
-        else if (level > backgroundObjects.Count)
+        else if (level > maxLevel)
         {
-            Debug.Log($"Maksimum seviye {backgroundObjects.Count}'dir. Seviyeyi maksimuma ayarlýyorum.");
-            level = backgroundObjects.Count;
+            level = maxLevel;
         }
 
         currentLevel = level;
-        Debug.Log($"Seviye {currentLevel} olarak ayarlandý.");
-        //UpdateLevelObjects();
+
         SetActiveLevelObjects();
     }
 
     private void SetActiveLevelObjects()
     {
-        for (int i = 0; i < maxLevel; i++)
+        foreach (Transform child in Backgrounds.transform)
         {
-            // Ana objenin tüm çocuklarýný kapat
-            foreach (Transform child in backgroundObjects[i].transform)
-            {
-                child.gameObject.SetActive(false);
-            }
-
-            // Sadece aktif seviyeye denk gelen objenin tüm çocuklarýný aç
-            if (i == currentLevel - 1)
-            {
-                Debug.Log("Çocuðun birini açtý : " + backgroundObjects[i]);
-                foreach (Transform child in backgroundObjects[i].transform)
-                {
-                    child.gameObject.SetActive(true);
-                }
-            }
+            child.gameObject.SetActive(false);
         }
+
+
+        Backgrounds.transform.GetChild(currentLevel - 1).gameObject.SetActive(true);
+        Backgrounds.transform.GetChild(currentLevel - 1).gameObject.transform.position = new Vector3(Backgrounds.transform.GetChild(currentLevel - 1).gameObject.transform.position.x + xoffset, Backgrounds.transform.GetChild(currentLevel - 1).gameObject.transform.position.y);
+
+
     }
 
 
-    // Level'a göre GameObject'leri güncelleme
-    private void UpdateLevelObjects()
-    {
-        for (int i = 0; i < maxLevel; i++)
-        {
-            backgroundObjects[i].SetActive(i == currentLevel - 1);
-
-        }
-    }
 }

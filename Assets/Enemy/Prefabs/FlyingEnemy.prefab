@@ -167,9 +167,9 @@ MonoBehaviour:
   moveSpeed: 5
   maxDistance: 7
   minDistance: 3
-  fireDistance: 10
-  detectionRange: 15
-  attackCooldown: 1
+  fireDistance: 15.52
+  detectionRange: 25.1
+  attackCooldown: 1.04
   shootPoint: {fileID: 8513784368441135011}
   projectilePrefab: {fileID: 7630684490683763888, guid: 9a1abbf3b2c493f4c958ce13ad67725f, type: 3}
   projectileSpeed: 15
