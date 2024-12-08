@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -27,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
+        //SceneManager.LoadScene(0);
         Debug.Log("Player Died!");
         // Oyuncu ölümü burada iþlenir (örneðin, oyun sonu ekraný, yeniden baþlatma vb.)
     }
