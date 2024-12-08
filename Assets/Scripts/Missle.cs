@@ -1,5 +1,3 @@
-using UnityEditor;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class Missle : MonoBehaviour
