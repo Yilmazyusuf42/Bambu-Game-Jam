@@ -7,6 +7,12 @@ using UnityEngine;
 
 public class TheCar : MonoBehaviour
 {
+    [Header("Car Statistics")]
+    public GameObject handbrakeUI;
+    public GameObject brakeUI;
+    public TextMeshProUGUI Gear;
+    public TextMeshProUGUI Speed;
+
     [SerializeField] private PlayerMovement player;
     [SerializeField] private GameObject carUI;
     [SerializeField] private GameObject driver;
@@ -167,10 +173,36 @@ public class TheCar : MonoBehaviour
         }
     }
 
+    public void StatisticChanger()
+    {
+        if (isHandbrakeActive)
+        {
+            handbrakeUI.SetActive(true);
+        }
+        else
+        {
+            handbrakeUI.SetActive(false);
+        }
+
+        if (isBraking)
+        {
+            brakeUI.SetActive(true);
+        }
+        else
+        {
+            brakeUI.SetActive(false);
+        }
+
+        Gear.text = $"Gear : {gearLevel}";
+
+        Speed.text = $"Speed : {(carRigidbody.velocity.x).ToString("F2")}";
+    }
 
     // Update is called once per frame
     void Update()
     {
+        StatisticChanger();
+
         //Debug.Log("Hızımız : " + this.GetComponent<Rigidbody2D>().velocity);
 
         //Debug.Log("Mazot Durumu : " + mazot);
