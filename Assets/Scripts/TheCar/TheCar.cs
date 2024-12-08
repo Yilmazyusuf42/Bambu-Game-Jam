@@ -53,7 +53,7 @@ public class TheCar : MonoBehaviour
 
     private Rigidbody2D carRigidbody;
 
-    private bool isHandbrakeActive = true;
+    private bool isHandbrakeActive;
     float handBreakSpeed = 2f;
 
     int gearLevel = 0;
@@ -79,6 +79,8 @@ public class TheCar : MonoBehaviour
         GetWheels();
 
         currentMazot = maxMazot;
+
+        Invoke(nameof(ToggleHandbrake),1f);
     }
 
     public void GetWheels()

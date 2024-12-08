@@ -206,18 +206,16 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void OnPlayerStoppedToDrive()
     {
-
         StartCoroutine(SlowApproach(-2));
-        transform.position = getOffPoint.position;
         rb.mass = initialMass;
         isDriving = false;
     }
 
     private void OnPlayerStartedToDrive()
     {
+        transform.position = driverSeat.position;
         StartCoroutine(SlowApproach(2));
         animator.SetBool(AnimationKey.Is_Running, false);
-        transform.position = driverSeat.position;
         rb.mass = 0;
         isDriving = true;
     }
@@ -247,7 +245,6 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
             yield return null;
         }
 
-        // Hedef boyut ve pozisyonu tam olarak ayarla
         mainCam.orthographicSize = targetSize;
         mainCam.transform.position = new Vector3(
             initialPosition.x,

@@ -7,6 +7,7 @@ public class FuelTriggerSystem : TriggerSystem
 
     private int fuelAmountToGain = 500;
 
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R) && PlayerInventory.instance.Inventory && isPlayerInTrigger)

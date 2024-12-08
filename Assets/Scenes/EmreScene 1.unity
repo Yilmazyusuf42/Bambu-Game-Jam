@@ -1240,6 +1240,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5007829769728863985, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_Size.y
+      value: 5.4075975
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007829769728863985, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.21140337
+      objectReference: {fileID: 0}
     - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: carUI
       value: 
@@ -1274,6 +1282,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1581964561875270342, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5191210655486718875, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
       propertyPath: driverSeat
       value: 
