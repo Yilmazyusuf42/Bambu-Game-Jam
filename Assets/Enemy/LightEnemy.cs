@@ -29,7 +29,8 @@ public class LightEnemy : MonoBehaviour
 
             if (Vector2.Distance(transform.position, playerCollider.transform.position) <= attackRange)
             {
-                AttackPlayer();
+
+                animator.SetTrigger("Attack");
             }
         }
     }
@@ -53,7 +54,7 @@ public class LightEnemy : MonoBehaviour
         }
     }
 
-    void AttackPlayer()
+    public void AttackPlayer()
     {
         if (!isAttacking)
         {
