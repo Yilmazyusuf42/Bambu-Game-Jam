@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class TheCar : MonoBehaviour
 {
-
+    [SerializeField] private GameObject playerUI;
     [SerializeField] private AudioClip engine;
 
     private AudioSource source;
@@ -471,6 +471,7 @@ public class TheCar : MonoBehaviour
         player.gameObject.SetActive(true);
         player.transform.position = getOffPos.position;
         carUI.SetActive(false);
+        playerUI.SetActive(true);
         playerIsInDriverSeat = false;
 
         StartCoroutine(SlowApproach(-6));

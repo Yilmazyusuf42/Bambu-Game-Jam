@@ -6453,6 +6453,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1150564165}
     - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: playerUI
+      value: 
+      objectReference: {fileID: 1992878848}
+    - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: carHealth
       value: 1000
       objectReference: {fileID: 0}
