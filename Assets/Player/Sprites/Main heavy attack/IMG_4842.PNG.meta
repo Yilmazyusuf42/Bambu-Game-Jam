@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2cd5f18cd89163c43a557bf32ab9be5c
+guid: 39caeb08cb3cec54e9cac2938ebb1638
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dash_0
+      name: IMG_4842_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 236
+        y: 162
         width: 2048
-        height: 1812
+        height: 1886
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 387b6494390b0e14d9d10f5d74a7ea22
-      internalID: -210621278
+      spriteID: 7da233b765b59c7449f6dc447b8bc19d
+      internalID: 1631167902
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dash_0: -210621278
+      IMG_4842_0: 56367541
+      IMG_4842_1: 1631167902
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

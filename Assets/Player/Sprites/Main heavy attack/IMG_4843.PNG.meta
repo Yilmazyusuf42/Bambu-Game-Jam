@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2cd5f18cd89163c43a557bf32ab9be5c
+guid: 8b26bc9a2ee442b498e672fc69149e9c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dash_0
+      name: IMG_4843_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 236
+        y: 58
         width: 2048
-        height: 1812
+        height: 1990
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 387b6494390b0e14d9d10f5d74a7ea22
-      internalID: -210621278
+      spriteID: b4264090aa938c548abe619b59c71814
+      internalID: -668743200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_4843_1
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 1665
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7ec6feffa3ae7a41bdd9fb097b422a2
+      internalID: 161218298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_4843_2
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 1666
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e664b6c2c1b0d5f4aa9e54d0dd2e1ff7
+      internalID: 2008930901
       vertices: []
       indices: 
       edges: []
@@ -141,7 +183,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dash_0: -210621278
+      IMG_4843_0: -668743200
+      IMG_4843_1: 161218298
+      IMG_4843_2: 2008930901
+      IMG_4843_3: -1960939030
+      IMG_4843_4: 1104385552
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

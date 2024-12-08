@@ -95,7 +95,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
                 animator.SetTrigger(AnimationKey.Player_Light_Attack);
             }
 
-            Attack(attackRadius, lightAttackDamage);
+            //Attack(attackRadius, lightAttackDamage);
             lightAttackIsOnCooldown = true;
         }
 
@@ -105,7 +105,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
     {
         if (!heavyAttackIsOnCooldown)
         {
-            Attack(attackRadius, heavyAttackDamage);
+            //Attack(attackRadius, heavyAttackDamage);
             animator.SetTrigger(AnimationKey.Player_Heavy_Attack);
             heavyAttackIsOnCooldown = true;
 

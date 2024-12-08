@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2cd5f18cd89163c43a557bf32ab9be5c
+guid: 62b10fafddda3094bb43c50f54149be3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dash_0
+      name: IMG_4845_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 236
+        y: 288
         width: 2048
-        height: 1812
+        height: 1760
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 387b6494390b0e14d9d10f5d74a7ea22
-      internalID: -210621278
+      spriteID: 54919f1347e0d3f40ad2beb7cd51f493
+      internalID: -181151807
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,38 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dash_0: -210621278
+      IMG_4845_0: -181151807
+      IMG_4845_1: 2109138061
+      IMG_4845_10: -327159846
+      IMG_4845_11: 351583246
+      IMG_4845_12: -848022897
+      IMG_4845_13: -1277337179
+      IMG_4845_14: 1277792281
+      IMG_4845_15: -1066456767
+      IMG_4845_16: -1183340096
+      IMG_4845_17: -763574233
+      IMG_4845_18: 957475539
+      IMG_4845_19: -1623941830
+      IMG_4845_2: 842253050
+      IMG_4845_20: -166342718
+      IMG_4845_21: 1618486984
+      IMG_4845_22: 1684315651
+      IMG_4845_23: -2140135729
+      IMG_4845_24: 1171782528
+      IMG_4845_25: 1022070147
+      IMG_4845_26: -358353376
+      IMG_4845_27: 1390832394
+      IMG_4845_28: 1949795579
+      IMG_4845_29: -363415255
+      IMG_4845_3: 658599305
+      IMG_4845_30: -1451700417
+      IMG_4845_31: 204495265
+      IMG_4845_4: 374593275
+      IMG_4845_5: -729584872
+      IMG_4845_6: 1922600535
+      IMG_4845_7: 451624188
+      IMG_4845_8: 1866058067
+      IMG_4845_9: -1702267648
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

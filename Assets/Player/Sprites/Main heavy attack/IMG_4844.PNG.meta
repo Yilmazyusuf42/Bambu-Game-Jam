@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2cd5f18cd89163c43a557bf32ab9be5c
+guid: b3213f581d6b1f443adcbabe5c93e2fd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dash_0
+      name: IMG_4844_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 236
+        y: 152
         width: 2048
-        height: 1812
+        height: 1896
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 387b6494390b0e14d9d10f5d74a7ea22
-      internalID: -210621278
+      spriteID: ec5756415888702498df144a91c25a55
+      internalID: -301664545
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dash_0: -210621278
+      IMG_4844_0: -301664545
+      IMG_4844_1: -282362268
+      IMG_4844_10: -224388223
+      IMG_4844_2: 1384195714
+      IMG_4844_3: 306487516
+      IMG_4844_4: -513034050
+      IMG_4844_5: -785567978
+      IMG_4844_6: -1025091630
+      IMG_4844_7: 1604065622
+      IMG_4844_8: -732288225
+      IMG_4844_9: -1183702036
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
