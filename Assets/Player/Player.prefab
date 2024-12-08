@@ -66,7 +66,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -981.09, y: -540.4633}
+  m_AnchoredPosition: {x: -981.09, y: -539.44}
   m_SizeDelta: {x: 1.4758, y: 1.3566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5531968648751067197
@@ -413,7 +413,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUI: {fileID: 0}
   driverSeat: {fileID: 0}
-  getOffPoint: {fileID: 0}
   moveSpeed: 10
   raycastShootPoint: {fileID: 597831247559912999}
   groundLayer:
@@ -470,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7d3e0bff7b20c4fa965bb6161c1aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 0}
   maxHealth: 100
 --- !u!114 &6244202255938405495
 MonoBehaviour:
@@ -552,7 +552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -981.09, y: -539.87994}
+  m_AnchoredPosition: {x: -981.09, y: -539.22}
   m_SizeDelta: {x: 1.4758, y: 1.3566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6061030117525717365

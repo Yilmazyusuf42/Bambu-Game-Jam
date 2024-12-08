@@ -446,14 +446,14 @@ RectTransform:
   m_GameObject: {fileID: 1856700402716538360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3077806529924126665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -985.28, y: -528.69}
+  m_AnchoredPosition: {x: -986.18, y: -530.39}
   m_SizeDelta: {x: 11.1108, y: 1.5698}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8488487652649668735
@@ -933,14 +933,14 @@ RectTransform:
   m_GameObject: {fileID: 3328567968898664570}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3077806529924126665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -985.28, y: -528.69}
+  m_AnchoredPosition: {x: -986.21, y: -530.41}
   m_SizeDelta: {x: 11.1108, y: 1.5698}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5084384127345290719
@@ -1405,7 +1405,7 @@ Transform:
   m_GameObject: {fileID: 4152962281443518838}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.23, y: 0, z: 0}
+  m_LocalPosition: {x: 10.23, y: -0.576, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2945,10 +2945,10 @@ MonoBehaviour:
   carUI: {fileID: 0}
   healthBar: {fileID: 0}
   mazotBar: {fileID: 0}
-  yururBar: {fileID: 0}
   taret: {fileID: 4697480333609111156}
   missle: {fileID: 7116950785579735357, guid: 4e2465fa12966e6458c50a1c86a313c2, type: 3}
   misslePlace: {fileID: 7048090882738087264}
+  carHealth: 200
   maxMazot: 1000
   fireStandBy: 0.1
   missleDamage: 20

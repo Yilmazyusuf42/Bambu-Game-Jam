@@ -12,7 +12,6 @@ public class TheCar : MonoBehaviour
     [Header(" GameObjects ")]
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private MazotBar mazotBar;
-    [SerializeField] private YururBar yururBar;
     [SerializeField] private GameObject taret;
     [SerializeField] private GameObject missle;
     [SerializeField] private Transform misslePlace;
@@ -20,7 +19,7 @@ public class TheCar : MonoBehaviour
     [Space(10)]
 
     [Header("Car Attributes")]
-    public static float carHealth;
+    public float carHealth;
     public static float aracYurur;
     [SerializeField] private float maxMazot;
     private float currentMazot;
@@ -74,7 +73,6 @@ public class TheCar : MonoBehaviour
 
         healthBar.SetMaxHealth(carHealth);
         mazotBar.SetMaxMazot(maxMazot);
-        yururBar.SetMaxYurur(aracYurur);
 
         GetWheels();
 
@@ -304,28 +302,7 @@ public class TheCar : MonoBehaviour
     }
     #endregion
 
-    #region Yurur Actions
-    public void DamagedYurur(float _damage)
-    {
-        aracYurur -= _damage;
-        Debug.Log(aracYurur);
-        yururBar.SetCurrentYurur(aracYurur);
-        if (aracYurur < 0)
-            yururOk = false;
-    }
 
-    public void HealYurur(float _health)
-    {
-        if (aracYurur + _health > 100)
-            aracYurur = 100f;
-        else
-            aracYurur += _health;
-        yururOk = true;
-        yururBar.SetCurrentYurur(aracYurur);
-        Debug.Log(aracYurur);
-
-    }
-    #endregion
 
     #region Mazot Actions
 

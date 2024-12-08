@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 {
     [SerializeField] private GameObject playerUI;
     [SerializeField] private Transform driverSeat;
-    [SerializeField] private Transform getOffPoint;
     private bool isDriving;
     private float initialMass;
 
@@ -206,6 +205,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void OnPlayerStoppedToDrive()
     {
+        playerUI.SetActive(true);
         StartCoroutine(SlowApproach(-2));
         rb.mass = initialMass;
         isDriving = false;
@@ -213,6 +213,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
     private void OnPlayerStartedToDrive()
     {
+        playerUI.SetActive(false);
         transform.position = driverSeat.position;
         StartCoroutine(SlowApproach(2));
         animator.SetBool(AnimationKey.Is_Running, false);
