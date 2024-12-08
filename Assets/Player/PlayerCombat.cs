@@ -54,7 +54,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
 
 
 
-    void Attack(float attackRadius, int attackDamage)
+    void Attack(float attackRadius, int attackDamage, float screenShakeAmount)
     {
         Vector2 attackDirection = (Vector2)transform.up;
 
@@ -65,7 +65,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
             if (enemy.TryGetComponent<EnemyHealth>(out var enemyHP))
             {
                 enemyHP.TakeDamage(attackDamage);
-                ScreenShake.Instance.Shake(0.15f,0);
+                ScreenShake.Instance.Shake(screenShakeAmount,0);
             }
         }
     }
@@ -73,12 +73,12 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
 
     public void LightAttackAnimationEvent()
     {
-        Attack(attackRadius, lightAttackDamage);
+        Attack(attackRadius, lightAttackDamage,0.1f);
     }
 
     public void HeavyAttackAnimationEvent()
     {
-        Attack(attackRadius, heavyAttackDamage);
+        Attack(attackRadius, heavyAttackDamage,0.25f);
     }
 
 
