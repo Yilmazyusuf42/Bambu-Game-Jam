@@ -7,6 +7,11 @@ using UnityEngine;
 
 public class TheCar : MonoBehaviour
 {
+
+    [SerializeField] private AudioClip engine;
+
+    private AudioSource source;
+
     [Header("Car Statistics")]
     public GameObject handbrakeUI;
     public GameObject brakeUI;
@@ -76,6 +81,7 @@ public class TheCar : MonoBehaviour
     private bool playerIsInDriverSeat;
     void Start()
     {
+        source = GetComponent<AudioSource>();
         carRigidbody = GetComponent<Rigidbody2D>();
         taretSprite = taret.GetComponent<SpriteRenderer>();
         orjSpriteColor = taretSprite.color;
@@ -460,7 +466,7 @@ public class TheCar : MonoBehaviour
 
     private void Car_OnPlayerStoppedToDrive()
     {
-        
+        source.Stop();
         driver.SetActive(false);
         player.gameObject.SetActive(true);
         player.transform.position = getOffPos.position;
@@ -484,7 +490,7 @@ public class TheCar : MonoBehaviour
 
     private void Car_OnPlayerStartedToDrive()
     {
-
+        source.PlayOneShot(engine);
         driver.SetActive(true);
         carUI.SetActive(true);
         playerIsInDriverSeat = true;

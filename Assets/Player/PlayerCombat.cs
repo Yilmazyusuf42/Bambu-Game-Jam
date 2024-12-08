@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour,IPlayerCombat
 {
+    [SerializeField] private AudioClip lightAttack;
+    [SerializeField] private AudioClip heavyAttack;
+
     [SerializeField] private float knockbackForce;
     [SerializeField] private GameObject bloodEffect;
     [SerializeField] private Transform attackPoint;
     [SerializeField] float attackRadius = 1f;
     [SerializeField] LayerMask enemyLayer;
 
+    AudioSource source;
     Animator animator;
     private IPlayerMovement playerMovement;
 
@@ -28,6 +32,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
     {
         animator = GetComponent<Animator>();
         playerMovement = GetComponent<IPlayerMovement>();
+        source = GetComponent<AudioSource>();
     }
 
 
@@ -56,7 +61,7 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
 
 
 
-    void Attack(float attackRadius, int attackDamage, float screenShakeAmount, bool heavyAttack)
+    void Attack(float attackRadius, int attackDamage, float screenShakeAmount, bool HeavyAttack)
     {
         Vector2 attackDirection = (Vector2)transform.up;
 
@@ -75,9 +80,15 @@ public class PlayerCombat : MonoBehaviour,IPlayerCombat
                 }
 
                 GameObject blood = Instantiate(bloodEffect, enemy.transform.position, Quaternion.identity);
-                if (heavyAttack)
+                if (HeavyAttack)
                 {
+
                     blood.transform.localScale *= 1.5f;
+                    source.PlayOneShot(heavyAttack);
+                }
+                else
+                {
+                    source.PlayOneShot(lightAttack);
                 }
 
                 Destroy(blood,.2f);

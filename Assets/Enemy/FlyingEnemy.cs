@@ -19,7 +19,7 @@ public class FlyingEnemy : enemy
     public float projectileSpeed = 5f;
 
     private bool canAttack = true;
-    private Transform player;
+    private Transform target;
     private Animator animator;
 
     private void Awake()
@@ -31,17 +31,35 @@ public class FlyingEnemy : enemy
     {
         // Oyuncuyu algýla
         Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, detectionRange, LayerMask.GetMask("Player"));
+        Collider2D carCollider = Physics2D.OverlapCircle(transform.position, detectionRange, LayerMask.GetMask("Car"));
 
-        if (playerCollider != null)
+        if (carCollider != null)
         {
-            player = playerCollider.transform;
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            target = carCollider.transform;
+            float distanceToCAr = Vector2.Distance(transform.position, target.position);
+
+            if (distanceToCAr > fireDistance)
+            {
+                MoveTowardsPlayer(target);
+            }
+
+            if (distanceToCAr <= fireDistance && canAttack)
+            {
+                canAttack = false;
+                animator.SetTrigger("Attack");
+
+            }
+        }
+        else if (playerCollider != null)
+        {
+            target = playerCollider.transform;
+            float distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
             // Oyuncuya olan mesafeye göre hareket et
             if (distanceToPlayer > fireDistance)
             {
                 // Oyuncudan uzaksa yaklaþ
-                MoveTowardsPlayer(player);
+                MoveTowardsPlayer(target);
             }
 
             // Eðer ateþ mesafesindeyse ateþ et
@@ -51,6 +69,8 @@ public class FlyingEnemy : enemy
                 animator.SetTrigger("Attack");
 
             }
+
+
             Rotate();
         }
     }
@@ -70,15 +90,15 @@ public class FlyingEnemy : enemy
 
     void Rotate()
     {
-        Vector2 direction = (player.position - transform.position).normalized;
+        Vector2 direction = (target.position - transform.position).normalized;
         Vector3 scale = transform.localScale;
-        scale.x = player.position.x > transform.position.x ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+        scale.x = target.position.x > transform.position.x ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
 
     void AttackPlayer()
     {
-        StartCoroutine(AttackCooldown(player));
+        StartCoroutine(AttackCooldown(target));
     }
 
     IEnumerator AttackCooldown(Transform player)
