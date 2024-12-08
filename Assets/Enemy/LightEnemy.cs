@@ -9,6 +9,7 @@ public class LightEnemy : MonoBehaviour
     public float attackDelay = 1f; 
     public float attackDamage = 10f;
     public Vector2 attackAreaSize;
+    public Transform attackPoint;
 
     private bool isAttacking = false;
     private Animator animator;
@@ -64,18 +65,17 @@ public class LightEnemy : MonoBehaviour
     {
         isAttacking = true;
 
-        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position, attackAreaSize, 0f, LayerMask.GetMask("Player"));
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(attackPoint.position, attackAreaSize, 0f, LayerMask.GetMask("Player"));
 
         foreach (var hitCollider in hitColliders)
         {
             PlayerHealth playerHealth = hitCollider.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
+                ScreenShake.Instance.Shake(0.1f, 0f);
                 playerHealth.TakeDamage(attackDamage);
             }
         }
-
-        Debug.Log("Attack!");
 
         yield return new WaitForSeconds(attackDelay);
 

@@ -1602,9 +1602,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1618642273}
     - target: {fileID: 5191210655486718875, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 1553922327}
+    - target: {fileID: 5191210655486718875, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 1992878848}
+    - target: {fileID: 5191210655486718875, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
+      propertyPath: getOffPos
+      value: 
+      objectReference: {fileID: 2129943638}
     - target: {fileID: 5191210655486718875, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
       propertyPath: driverSeat
       value: 
@@ -3947,9 +3955,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1582324104658286359, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582324104658286359, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.61
+      objectReference: {fileID: 0}
     - target: {fileID: 3906666901279298258, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -143.31
+      value: -168.8
       objectReference: {fileID: 0}
     - target: {fileID: 3906666901279298258, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3991,26 +4007,18 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1618642273}
-    - target: {fileID: 5600716387739098804, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 5600716387739098804, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.19
-      objectReference: {fileID: 0}
     - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: carUI
       value: 
       objectReference: {fileID: 1645542970}
     - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1873305017}
+    - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: mazotBar
       value: 
       objectReference: {fileID: 1150564165}
-    - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
-      propertyPath: yururBar
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
       propertyPath: healthBar
       value: 
@@ -4989,6 +4997,17 @@ Transform:
   - {fileID: 1841285134}
   m_Father: {fileID: 736515445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1553922327 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7648688007857592163, guid: f6f46d2341048ac40bf5a477eaf1f549, type: 3}
+  m_PrefabInstance: {fileID: 1243066055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e871b703146a92d4fa34773b842e76b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1574813986
 GameObject:
   m_ObjectHideFlags: 0
@@ -6033,6 +6052,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.75, y: 18.11}
   m_EdgeRadius: 0
+--- !u!114 &1873305017 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5191210655486718875, guid: 7d68451e6f2254340ae4fb36e6efa687, type: 3}
+  m_PrefabInstance: {fileID: 519591160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028272e5828ff724390a86471f0a8eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1874577567
 GameObject:
   m_ObjectHideFlags: 0

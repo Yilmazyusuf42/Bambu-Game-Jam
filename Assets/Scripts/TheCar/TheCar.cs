@@ -7,7 +7,10 @@ using UnityEngine;
 
 public class TheCar : MonoBehaviour
 {
+    [SerializeField] private PlayerMovement player;
     [SerializeField] private GameObject carUI;
+    [SerializeField] private GameObject driver;
+    [SerializeField] private Transform getOffPos;
 
     [Header(" GameObjects ")]
     [SerializeField] private HealthBar healthBar;
@@ -173,7 +176,7 @@ public class TheCar : MonoBehaviour
         //Debug.Log("Mazot Durumu : " + mazot);
 
         fireTimer -= Time.deltaTime;
-        Movement();
+
 
 
 
@@ -194,6 +197,8 @@ public class TheCar : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.DownArrow))
                 gearDown();
         }
+
+        Movement();
 
 
         controllingTaret = playerIsInDriverSeat;
@@ -423,8 +428,19 @@ public class TheCar : MonoBehaviour
 
     private void Car_OnPlayerStoppedToDrive()
     {
+        
+        driver.SetActive(false);
+        player.gameObject.SetActive(true);
+        player.transform.position = getOffPos.position;
         carUI.SetActive(false);
-       playerIsInDriverSeat = false;
+        playerIsInDriverSeat = false;
+
+        StartCoroutine(SlowApproach(-6));
+        if (Camera.main.TryGetComponent<CameraControl>(out var camera))
+        {
+            camera.offset = new Vector3(5, camera.offset.y, camera.offset.z);
+            camera.SetTarget(player.transform);
+        }
     }
 
     private void Car_OnFuelGained(int amount)
@@ -436,12 +452,40 @@ public class TheCar : MonoBehaviour
 
     private void Car_OnPlayerStartedToDrive()
     {
+
+        driver.SetActive(true);
         carUI.SetActive(true);
         playerIsInDriverSeat = true;
+
+        StartCoroutine(SlowApproach(6));
+        if (Camera.main.TryGetComponent<CameraControl>(out var camera))
+        {
+            camera.offset = new Vector3(5, camera.offset.y, camera.offset.z);
+            camera.SetTarget(driver.transform);
+        }
     }
 
     public bool IsHandBreakActive()
     {
         return isHandbrakeActive;
+    }
+
+
+    private IEnumerator SlowApproach(float targetIncrease)
+    {
+        Camera mainCam = Camera.main;
+        float initialSize = mainCam.orthographicSize; // Kameranın başlangıç boyutu
+        float targetSize = initialSize + targetIncrease; // Hedef boyut
+        float elapsedTime = 0f;
+
+        Vector3 initialPosition = mainCam.transform.position; // Kameranın başlangıç pozisyonu
+
+        while (elapsedTime < 1f)
+        {
+            mainCam.orthographicSize = Mathf.Lerp(initialSize, targetSize, elapsedTime / 1f);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
     }
 }

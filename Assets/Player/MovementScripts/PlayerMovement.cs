@@ -8,8 +8,10 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour,IPlayerMovement
 {
+    public TheCar car;
     [SerializeField] private GameObject playerUI;
     [SerializeField] private Transform driverSeat;
+
     private bool isDriving;
     private float initialMass;
 
@@ -32,7 +34,6 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     private bool isDodging;
     private float dodgeStartTime;
     private Vector3 dodgeDirection;
-    private Vector3 dodgeVelocity;
     private bool canDodge = true;
     private float lastDodgeTime = -Mathf.Infinity;
 
@@ -91,7 +92,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     {
         if (isDriving)
         {
-            transform.position = driverSeat.transform.position;
+            //transform.position = driverSeat.transform.position;
             return;
         }
 
@@ -99,7 +100,7 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
 
         if (isDodging)
         {
-            PerformDodge(GetDodgeDirection());
+            PerformDodge();
         }
 
         if (Time.time >= lastDodgeTime + timeBetweenDodges && !isDodging)
@@ -152,35 +153,28 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
         canDodge = false;
         lastDodgeTime = Time.time;
         dodgeStartTime = Time.time;
+        dodgeDirection = GetDodgeDirection();
         animator.SetBool(AnimationKey.Player_Is_Dodging, true);
     }
 
-    private void PerformDodge(Vector3 direction)
+    private void PerformDodge()
     {
-        if (!isDodging) return;
+        float elapsedTime = Time.time - dodgeStartTime;
 
-        isDodging = true;
-
-        dodgeVelocity = direction.normalized * (dodgeDistance / dodgeTime);
-
-        rb.velocity = dodgeVelocity;
-
-
-        Invoke(nameof(EndDodge), dodgeTime);
+        if (elapsedTime > dodgeTime)
+        {
+            EndDodge();
+        }
+        else
+        {
+            transform.position += dodgeDirection * Time.deltaTime / dodgeTime * dodgeDistance;
+        }
     }
-
 
     private void EndDodge()
     {
-        if (!isDodging) return;
-
         animator.SetBool(AnimationKey.Player_Is_Dodging, false);
-
         isDodging = false;
-
-        rb.velocity = Vector3.zero;
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -215,27 +209,33 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
     private void OnPlayerStoppedToDrive()
     {
         playerUI.SetActive(true);
+        rb.mass = initialMass;
+        isDriving = false;
+
         StartCoroutine(SlowApproach(-6));
         if (Camera.main.TryGetComponent<CameraControl>(out var camera))
         {
             camera.offset = new Vector3(0, camera.offset.y, camera.offset.z);
         }
-        rb.mass = initialMass;
-        isDriving = false;
+
+
+
     }
 
     private void OnPlayerStartedToDrive()
     {
         playerUI.SetActive(false);
-        transform.position = driverSeat.position;
+        
+
         StartCoroutine(SlowApproach(6));
         if (Camera.main.TryGetComponent<CameraControl>(out var camera))
         {
             camera.offset = new Vector3(5,camera.offset.y,camera.offset.z);
         }
-        animator.SetBool(AnimationKey.Is_Running, false);
-        rb.mass = 0;
-        isDriving = true;
+        //animator.SetBool(AnimationKey.Is_Running, false);
+        //rb.mass = 0;
+        //isDriving = true;
+        gameObject.SetActive(false);
     }
 
     private IEnumerator SlowApproach(float targetIncrease)
@@ -250,23 +250,10 @@ public class PlayerMovement : MonoBehaviour,IPlayerMovement
         while (elapsedTime < 1f)
         {
             mainCam.orthographicSize = Mathf.Lerp(initialSize, targetSize, elapsedTime / 1f);
-
-            //mainCam.transform.position = new Vector3(
-            //    initialPosition.x,
-            //    transform.position.y + mainCam.orthographicSize - initialSize, // Oyuncuyu merkezde tut
-            //    initialPosition.z
-            //);
-
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        //mainCam.orthographicSize = targetSize;
-        //mainCam.transform.position = new Vector3(
-        //    initialPosition.x,
-        //    transform.position.y + targetSize - initialSize,
-        //    initialPosition.z
-        //);
     }
 }
 
