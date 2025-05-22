@@ -6,4 +6,4 @@ Bu proje, [BambuJam 2024 ] kapsamında geliştirilen bir grup çalışmasıdır.
 
 Bu projede ben, **araç mekaniklerini** ve **araç içindeki taret sistemini** geliştirdim. Araç sürüş dinamikleri, hız ve kontrol mekanikleri üzerine çalışırken, taret sistemi için ateşleme, dönüş açısı ve hedefleme gibi unsurlar üzerinde yoğunlaştım.
 
-[![Oyun içi görüntü](https://drive.google.com/file/d/1VNQL45JK0tLXGdQF8ISbnkU2mKyTv8ie/view)
+<iframe src="https://drive.google.com/file/d/1VNQL45JK0tLXGdQF8ISbnkU2mKyTv8ie/view?usp=sharing" width="640" height="360"></iframe>
