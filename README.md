@@ -1,6 +1,6 @@
 # Game Jam Projesi - Deadline
 
-Bu proje, [BambuJam 2024 ] kapsamında geliştirilen bir grup çalışmasıdır. Oyunumuz, [yolculuk konusu] üzerine kuruludur ve takım olarak çeşitli mekanikler üzerinde çalıştık.
+Bu proje, BambuJam 2024  kapsamında geliştirilen bir grup çalışmasıdır. Oyunumuz, yolculuk konusu üzerine kuruludur ve takım olarak çeşitli mekanikler üzerinde çalıştık.
 
 ## 🚗 Araç Mekanikleri ve Taret Sistemi
 
